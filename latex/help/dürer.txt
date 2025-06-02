@@ -1,0 +1,1070 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\usepackage{pgf,tikz}
+\usepackage{hyperref}
+\usepackage{tabularray}
+
+
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+
+
+\begin{center}
+\begin{tikzpicture}[x=1 cm, y=1cm, scale=0.6]
+    \foreach \x in {0,...,10}
+        \draw [line width=0.5pt] (\x,0)--(\x,9);
+    \foreach \a in {0,...,9}
+        \draw [line width=0.5pt] (0,\a)--(10,\a);
+    \fill[fill=gray, opacity=0.5] (1,2) -- (9,2) -- (9,7) -- (1,7) -- (1,2);
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[x=1 cm, y=1cm, scale=0.6]
+    \large
+    \foreach \x in {0,...,10}
+        \draw [line width=0.5pt] (\x,0)--(\x,9);
+    \foreach \y in {0,...,9}
+        \draw [line width=0.5pt] (0,\y)--(10,\y);
+    \fill[line width=0.pt, fill=gray, opacity=0.5] (1,2) -- (9,2) -- (9,7) -- (1,7) -- (1,2);
+    \draw[line width=2.5pt] (0,0) -- (1,0) -- (1,9) -- (4,9) -- (4,0) -- (7,0) -- (7,9) -- (10,9) -- (10,0) -- (7,0) -- (7,9) -- (4,9) -- (4,0) -- (1,0) -- (1,9) -- (0,9) -- (0,0);
+    \foreach \x in {1,...,10}
+        \draw [line width=2.5pt] (\x,1)--(\x,4);
+    \foreach \x in {1,...,10}
+        \draw [line width=2.5pt] (\x,5)--(\x,8);
+    \draw[line width=2.5pt] (1,8) -- (10,8);
+    \draw[line width=2.5pt] (1,5) -- (10,5);
+    \draw[line width=2.5pt] (1,4) -- (10,4);
+    \draw[line width=2.5pt] (1,1) -- (10,1);
+    \draw[line width=2.5pt] (0,3) -- (1,3);
+    \draw[line width=2.5pt] (0,6) -- (1,6);
+    \node at (3.5,4.5) {x};
+    \node at (4.5,4.5) {x};
+    \node at (5.5,4.5) {x};
+    \node at (6.5,4.5) {x};
+\end{tikzpicture}
+\end{center}
+
+
+% vonal, for, egyszerű
+\begin{center}
+\begin{tikzpicture}[x=1 cm, y=1cm, scale=1.3]
+\foreach \x in {0,...,3}
+    \draw [dotted] (\x,0)--(\x,3);
+\foreach \y in {0,...,3}
+    \draw [dotted] (0,\y)--(3,\y);
+\draw [line width=3] (0,0.8)--(0,0)--(1.8,0);
+\draw [line width=3] (1,0.2)--(1,2)--(0.2,2);
+\draw [line width=3] (0,1.2)--(0,3)--(0.8,3);
+\draw [lightgray, line width=3] (0.2,1)--(2,1)--(2,0.2);
+\draw [lightgray, line width=3] (1,2.8)--(1,2)--(2.8,2);
+\draw [line width=3] (1.2,3)--(3,3)--(3,2.2);
+\draw [line width=3] (2,2.8)--(2,1)--(2.8,1);
+\draw [line width=3] (3,1.8)--(3,0)--(2.2,0);
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+% vonal, pont másképp, egyszerű
+\begin{center}
+\begin{tikzpicture}[scale=2.5]
+	\clip(-0.1,-0.1) rectangle (2.1,1.1);
+\draw (0,0) -- (0,1) -- ++(330:2) -- cycle;
+\fill (0.2,0.6) circle (1pt);
+\draw (0.3,0.6) node {P};
+    \draw[->] (0.2,0.6) -- ++(-0.1732,-0.1);
+\end{tikzpicture}
+\end{center}
+
+\vspace{2mm}
+% vonalak, egyszerű
+\begin{tikzpicture}
+\draw[very thick] (0,0) -- ++(60:1) -- ++(0:1) -- ++(60:1) -- ++(300:1)
+            -- ++(240:1) -- ++(180:1) -- ++(300:1) -- ++(180:1)
+            -- cycle;
+\draw[dotted] (0,0) -- (1,0);
+\draw[dotted] (1,0) -- ++(60:1);
+\draw[dotted] (1,0) -- ++(240:1);
+\draw[dotted] (1,0) -- ++(120:1);
+\draw[dotted] (2,0) -- ++(120:1) -- ++(0:1);
+\draw[fill=black] (0,0) circle (.5ex);
+\end{tikzpicture}
+
+\vspace{2mm}
+
+
+
+% vonal, for, egyszerű
+\begin{center}
+\begin{tikzpicture}[x=1 cm, y=1 cm, scale=1]
+\foreach \i in {0,...,2}
+    {
+        \draw [line width=1.pt] (\i,0)--(\i,0.3);
+        \draw [line width=1.pt] (\i,0.7)--(\i,1.3);
+        \draw [line width=1.pt] (\i,1.7)--(\i,2); 
+        \draw [line width=1.pt] (0,\i)--(0.3,\i);
+        \draw [line width=1.pt] (0.7,\i)--(1.3,\i);
+        \draw [line width=1.pt] (1.7,\i)--(2,\i);
+        \draw [line width=1.pt] (0.3,\i) arc (180:0:0.2);
+        \draw [line width=1.pt] (1.3,\i) arc (180:0:0.2);
+        \draw [line width=1.pt] (\i,0.7) arc (90:270:0.2);
+        \draw [line width=1.pt] (\i,1.3) arc (270:450:0.2);
+    }
+
+\end{tikzpicture}
+\end{center}
+
+
+\vspace{2mm}
+
+
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(-8.92,-5.96) rectangle (8.92,5.96);
+\draw [line width=2pt,domain=-8.92:8.92] plot(\x,{(--1.1684-0.42*\x)/4.7});
+\draw [line width=2pt,domain=-8.92:8.92] plot(\x,{(-9.7216-4.7*\x)/-0.42});
+\draw [line width=2pt] (-1.38,2.16) circle (1.84808008484481cm);
+\begin{scriptsize}
+\begin{LARGE}
+\draw [fill=black] (-4.38,0.64) circle (3.5pt);
+\draw (-4.22,1.07) node {$A$};
+\draw [fill=black] (0.32,0.22) circle (3.5pt);
+\draw (0.48,0.65) node {$B$};
+\draw [fill=black] (-1.38,2.16) circle (3.5pt);
+\draw (-1.22,2.59) node {$C$};
+\draw (-8.68,1.35) node {$f$};
+\draw (-1.32,5.71) node {$g$};
+\draw [fill=black] (-2.03,0.43) circle (3.5pt);
+\draw (-1.68,0.86) node {$D$};
+\draw (-2.24,3.57) node {$c$};   
+\end{LARGE}
+
+\end{scriptsize}
+\end{tikzpicture}
+
+
+% vonalak, fill, for, egyszerű
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    \fill[opacity=0.3] (-105:2) rectangle (75:2);
+    \foreach \n in {1,2,...,12}
+    {
+        \draw (30*\n-135:2) -- (30*\n-105:2); 
+        
+        \fill (30*\n-135:2) circle (2pt);
+        \draw (30*\n-135:2.5) node {$A_{\n}$};
+    }    
+\end{tikzpicture}
+\end{center}
+
+\vspace{2mm}
+
+
+\begin{tikzpicture}[scale=0.7, dot/.style={circle, draw, fill, inner sep=1pt}]
+    %a köröknek a kp.-át és sugarát kell megadni
+    \draw (-1,-1) circle ({sqrt(2)});
+    \draw (1,-1) circle ({sqrt(2)});
+    \draw (-1,1) circle ({sqrt(2)});
+    \draw (1,1) circle ({sqrt(2)});
+    \draw (-1,-1) -- (-1,1) -- (1,1) -- (1,-1) -- (-1,-1);
+    \node[dot, label=A] (A) at (0,2) {}; % Alapértelmezetten 90 fokos szögben van a label.
+    \node[dot, label={0:B}] (B) at (2,0) {};
+    \node[dot, label={270:C}] (C) at (0,-2) {};
+    \node[dot, label={180:D}] (D) at (-2,0) {};
+    \draw[dashed] (A) -- (B) -- (C) -- (D) -- (A);
+    
+\end{tikzpicture}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7, dot/.style={circle, draw, fill, inner sep=1.5pt}]
+    \definecolor{graycolor}{HTML}{bfbfbf} %%% Tapasztalat: opacity-t nem lehet megadni. Előbb kell megadni a fillt és utána minden mást.
+    % Define coordinates
+    \coordinate (A) at (-1,-1);
+    \coordinate (B) at (1,-1);
+    \coordinate (C) at (1,1);
+    \coordinate (D) at (-1,1);
+    %%% Jövőbeli teendő: clippekkel való szórakozás: kivonás, inverz, stb...
+    % Create gray fills (important to do it before lines and nodes)
+    \begin{scope}
+        \clip (A) circle(2);
+        \fill[graycolor] (B) circle(2);
+    \end{scope}
+    \begin{scope}
+        \clip (B) circle(2);
+        \fill[graycolor] (C) circle(2);
+    \end{scope}
+    \begin{scope}
+        \clip (C) circle(2);
+        \fill[graycolor] (D) circle(2);
+    \end{scope}
+    \begin{scope}
+        \clip (D) circle(2);
+        \fill[graycolor] (A) circle(2);
+    \end{scope}
+    \begin{scope}
+        \clip (A) circle(2);
+        \clip (B) circle(2);
+        \clip (C) circle(2);
+        \fill[white] (D) circle(2);
+    \end{scope}
+
+    % Draw circles and square
+    \draw (A) circle (2);
+    \draw (B) circle (2);
+    \draw (C) circle (2);
+    \draw (D) circle (2);
+    \draw (A) -- node[below] {36 cm} (B) -- (C) -- (D) -- (A);
+
+    % Create nodes
+    \node[dot] at (A) {};
+    \node[dot] at (B) {};
+    \node[dot] at (C) {};
+    \node[dot] at (D) {};
+
+\end{tikzpicture}
+\end{center}
+
+
+
+
+%\includegraphics[width=\textwidth]{orszagos_megoldokulcs.png} %azok hiányoznak, amelyeken nincs rács
+
+\begin{center}
+\begin{tikzpicture}[x=1 cm, y=1 cm, scale=0.8]
+%\clip(-0.1,-0.1) rectangle (6.1,6.1);
+\foreach \j in {-0.5,1,2,3}{
+\foreach \i in {0,...,3}
+    {
+        \draw [line width=1.pt] (\j*5+\i,0)--(\j*5+\i,3); 
+    }
+\foreach \i in {0,...,3}
+    {
+        \draw [line width=1.pt] (\j*5+0,\i)--(\j*5+3,\i); 
+    }
+    \begin{LARGE}
+    \node at (\j*5+0.5,0.5) {2};
+    \node at (\j*5+1.5,0.5) {1};
+    \node at (\j*5+1.5,1.5) {3};
+    \node at (\j*5+1.5,2.5) {2};
+    \node at (\j*5+2.5,0.5) {1};
+    \node at (\j*5+2.5,1.5) {1};
+    \end{LARGE}}
+    \draw[line width=8.pt][opacity=0.5] (6.6,0.5)--(5.5,0.5)--(5.5,2.5)--(7.6,2.5);
+    \draw[line width=8.pt][opacity=0.5] (11.5,0.4)--(11.5,2.5)--(10.5,2.5)--(10.5,1.4);
+    \draw[line width=8.pt][opacity=0.5] (16.5,0.4)--(16.5,1.5)--(15.5,1.5)--(15.5,2.5)--(16.6,2.5);
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\usetikzlibrary{intersections}
+\begin{tikzpicture}[scale=0.175]
+  \draw[domain=-20:20, smooth, variable=\x, name path=line 1, line width=1.5pt] plot ({\x}, {-1000/(\x*\x+100)});
+  \draw[domain=-20:20, smooth, variable=\x, name path=line 2, white] plot ({\x}, {-6});
+  \draw[domain=-20:20, smooth, variable=\x, name path=line 3, white] plot ({\x}, {-3});
+  \fill[name intersections={of=line 1 and line 2}]
+    (intersection-1) circle (15pt) node {}
+    (intersection-2) circle (15pt) node {};
+  \draw (intersection-1) -- (intersection-2);
+  \fill[name intersections={of=line 1 and line 3}]
+    (intersection-1) circle (15pt) node {}
+    (intersection-2) circle (15pt) node {};
+  \draw (intersection-1) -- (intersection-2);
+  \draw (0,-12) -- (0,0);
+\end{tikzpicture}
+\end{center}
+
+
+
+% görbe vonal, bonyolult
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm,scale=0.4]
+%\clip(-7.2084378124873165,-6.715434905815687) rectangle (13.094011723728244,5.211116167028416);
+\draw[line width=1.5pt, smooth,samples=100,domain=0:6.283185307179586] plot[parametric] function{3*(0.9009688679024191*(cos((t))*cos((7*t)))-0.4338837391175581*(sin((t))*cos((7*t)))),3*(0.4338837391175581*(cos((t))*cos((7*t)))+0.9009688679024191*(sin((t))*cos((7*t))))};
+\draw[line width=1.5pt, smooth,samples=100,domain=0:6.283185307179586] plot[parametric] function{5*(0.9009688679024191*(cos((t))*cos((7*t)))-0.4338837391175581*(sin((t))*cos((7*t)))),5*(0.4338837391175581*(cos((t))*cos((7*t)))+0.9009688679024191*(sin((t))*cos((7*t))))};
+\draw[line width=1.5pt, smooth,samples=100,domain=0:6.283185307179586] plot[parametric] function{4*(cos((t))*cos((7*t))),4*(sin((t))*cos((7*t)))};
+\draw[line width=1.5pt, smooth,samples=100,domain=0:6.283185307179586] plot[parametric] function{2*(cos((t))*cos((7*t))),2*(sin((t))*cos((7*t)))};
+\end{tikzpicture}
+\end{center}
+
+\vspace{2mm}
+
+
+
+
+\usetikzlibrary {angles,quotes} % ÁDÁM NOTE: Soha ne belül definiáld, mert bajokat okozhat. Mindig legkívül definiáld.
+\begin{center}
+\scalebox{1.7}{
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm,scale=1, dot/.style={circle, draw, fill, inner sep=1pt}]
+\begin{scriptsize}
+\node[dot, label={270:B}] (B) at (0,0) {};
+\node[dot, label={A}] (A) at (1.1349,2.956) {};
+\node[dot, label={270:C}] (C) at (6.9357,0) {};
+\node[dot, label={270:G}] (G) at (1.1349,0) {};
+\node[dot, label={270:D}] (D) at (2.2694,0) {};
+\node[dot, label={30:F}] (F) at (1.702,1.478) {};
+\draw (A) -- (B) -- (C) -- (A);
+\draw (G) -- (A) -- (D) -- (G) -- (F);
+
+% Angles
+\pic ["\scalebox{0.7}{$42^\circ$}", draw,angle radius=0.85cm,angle eccentricity=0.75] {angle = D--A--C};
+\pic ["\scalebox{0.7}{$21^\circ$}", draw,angle radius=1.3cm,angle eccentricity=0.8] {angle = B--A--G};
+\pic ["\scalebox{0.7}{$21^\circ$}", draw,angle radius=1.2cm,angle eccentricity=0.85] {angle = G--A--D};
+\pic ["\scalebox{0.7}{$21^\circ$}", draw,angle radius=1.2cm,angle eccentricity=0.85] {angle = F--G--A};
+\pic ["\scalebox{0.7}{$\beta$}", draw,angle radius=0.4cm,angle eccentricity=0.6] {angle = D--G--F};
+\pic ["\scalebox{0.7}{$\beta$}", draw,angle radius=0.4cm,angle eccentricity=0.6] {angle = D--B--A};
+\pic ["\scalebox{0.7}{$\beta$}", draw,angle radius=0.4cm,angle eccentricity=0.6] {angle = F--D--G};
+\pic ["\scalebox{0.7}{$42^\circ$}", draw,angle radius=0.7cm,angle eccentricity=0.7] {angle = G--F--D};
+\end{scriptsize}
+\end{tikzpicture}
+}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[x=4cm,y=4cm, dot/.style={circle, draw, fill, inner sep=1.5pt}]
+\node[dot, label=A] (A) at (0.5,1.9364916731037085) {};
+\node[dot, label=below:B] (B) at (0,0) {};
+\node[dot, label=below:C] (C) at (1,0) {};
+\node[dot, label=135:O] (O) at (0.5,0.9036961141150639) {};
+\node[dot] (I) at (0.5,0.6454972243679022) {};
+\path (I) ++(340:1.2em) node{I};
+\node[dot, label=135:F] (F) at (0.25,0.9682458365518543) {};
+\node[dot, label=45:G] (G) at (0.75,0.9682458365518543) {};
+\node[dot, label=below:H] (H) at (0.5,0) {};
+\draw (A) -- (B) -- (C) -- (A);
+\draw (C) -- (F);
+\draw (B) -- (G);
+\draw (A) -- (H);
+\draw (O) -- (G);
+\draw[dashed] (O) circle (0.2582);
+\pic ["\scalebox{0.8}{$\alpha$}", draw,angle radius=0.6cm,angle eccentricity=0.6] {angle = C--B--G};
+\pic ["\scalebox{0.8}{$\alpha$}", draw,angle radius=0.7cm,angle eccentricity=0.7] {angle = I--G--C};
+\pic ["\scalebox{2}{.}", draw,angle radius=0.55cm,angle eccentricity=0.55] {angle = A--H--B}; 
+\pic ["\scalebox{0.6}{}", draw,angle radius=0.55cm,angle eccentricity=0.55] {angle = G--I--O};
+\pic ["\scalebox{0.8}{}", draw,angle radius=0.55cm,angle eccentricity=0.55] {angle = O--G--I};
+\pic ["\scalebox{0.8}{}", draw,angle radius=0.55cm,angle eccentricity=0.55] {angle = B--I--H};
+\end{tikzpicture}
+\end{center}
+
+\usetikzlibrary {angles,quotes}
+\begin{center}
+\begin{tikzpicture}[dot/.style={circle, fill, inner sep=1.5pt}]
+    \node[dot, label={235:A}] (A) at (0,0) {};
+    \node[dot, label={120:B}] (B) at (3,4) {};
+    \node[dot, label={60:C}] (C) at (8,4) {};315:D{}
+    \node[dot, label={315:D}] (D) at (11,0) {};
+    \node[dot, label={270:E}] (E) at (5.5,-1) {};
+    \node[dot] (F) at (4,2) {};
+    \coordinate (F2) at (7,2);
+    \path (F) ++(75:1.2em) node{F};
+    \node[dot] (G) at (5,0) {};
+    \path (G) ++(240:1.2em) node{G};
+    \node[dot] (I) at (6,0) {};
+    \path (I) ++(300:1.2em) node{I};
+    \node[dot, label={270:H}] (H) at (3,0) {};
+    \node[dot, label=M] (M) at (5.5,0) {};
+    \draw (A) -- (B) -- (C) -- (D) -- (A);
+    \draw (B) -- (D);
+    \draw (B) -- (E);
+    \draw (B) -- (H);
+    \draw (C) -- (A);
+    \draw (C) -- (E);
+    \draw (E) -- (M);
+    \pic ["\scalebox{2}{.}", draw,angle radius=0.55cm,angle eccentricity=0.55] {angle = A--F--G}; 
+    \pic ["\scalebox{2}{.}", draw,angle radius=0.55cm,angle eccentricity=0.55] {angle = G--H--B};
+    \pic ["\scalebox{0.8}{$\alpha$}", draw,angle radius=1cm,angle eccentricity=0.7] {angle = H--A--F};
+    \pic ["\scalebox{0.8}{$\alpha$}", draw,angle radius=1cm,angle eccentricity=0.7] {angle = B--C--A};
+    \pic ["\scalebox{0.8}{$\alpha$}", draw,angle radius=1cm,angle eccentricity=0.7] {angle = C--A--B};
+\end{tikzpicture}
+\end{center}
+
+
+
+
+
+
+
+%táblázat
+\begin{center}
+\begin{tikzpicture}[x=1 cm, y=1cm, scale=0.47]
+    \foreach \x in {0,...,5}
+        \draw [line width=2pt] (\x,0)--(\x,5);
+    \foreach \y in {0,...,5}
+        \draw [line width=2pt] (0,\y)--(5,\y);
+    \begin{large}
+    \node at (0.5,0.5) {1};
+    \node at (2.5,1.5) {1};
+    \node at (3.5,1.5) {2};
+    \node at (1.5,2.5) {2};
+    \node at (2.5,2.5) {1};
+    \node at (3.5,2.5) {3};
+    \node at (2.5,3.5) {1};
+    \node at (3.5,3.5) {2};
+    \node at (0.5,4.5) {1};
+    \fill [gray] (4,3) rectangle (5,4);
+    \fill [gray] (4,2) rectangle (5,3);
+    \fill [gray] (4,1) rectangle (5,2);
+    \draw[black] (4.5,4.5)  node {x};
+    \draw[black] (3.5,4.5)  node {x};
+    \draw[black] (2.5,4.5)  node {x};
+    \draw[black] (4.5,0.5)  node {x};
+    \draw[black] (3.5,0.5)  node {x};
+    \draw[black] (2.5,0.5)  node {x};
+    \end{large}
+\end{tikzpicture}
+\end{center}
+
+\vspace{2mm}
+
+
+
+\noindent\begin{minipage}{0.6\textwidth}
+Anett meghívta 8 barátját egy társasjátékpartira.
+A partira egyesével érkeztek meg az emberek, és mindenki az érkezéskor lerakta az általa hozott társasokat vagy a padlóra, vagy valamelyik másik társasjáték tetejére. A nyolcadik vendég megérkezése után az ábrán látható módon álltak a társasok. Hányadikként érkezett meg Benedek a partira? 
+
+\noindent \textit{A nevek a társasokon azt jelölik, hogy ki hozta azt a játékot. A megérkezett emberek közé Anettet nem számoljuk bele.}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{center}
+\begin{tikzpicture}[x=0.87 cm, y=1cm, scale=0.73]
+    \foreach \x in {0,2,4,6,8,10}
+        \draw [line width=2pt] (\x,0)--(\x,4);
+    \foreach \y in {0,...,3}
+        \draw [line width=2pt] (0,\y)--(10,\y);
+        \draw [line width=2pt] (0,4)--(2,4);
+        \draw [line width=2pt] (4,4)--(6,4);
+        \draw [line width=2pt] (8,4)--(10,4);
+    \node at (1,0.5) {Andris};
+    \node at (1,1.5) {Hanga};
+    \node at (1,2.5) {Dani};
+    \node at (1,3.5) {Orsi};
+    \node at (3,0.5) {Gábor};
+    \node at (3,1.5) {Benedek};
+    \node at (3,2.5) {Luca};
+    \node at (5,0.5) {Andris};
+    \node at (5,1.5) {Kartal};
+    \node at (5,2.5) {Hanga};
+    \node at (5,3.5) {Orsi};
+    \node at (7,0.5) {Hanga};
+    \node at (7,1.5) {Gábor};
+    \node at (7,2.5) {Luca};
+    \node at (9,0.5) {Kartal};
+    \node at (9,1.5) {Benedek};
+    \node at (9,2.5) {Luca};
+    \node at (9,3.5) {Dani};
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+
+\begin{tblr}{|X|X|X|X|X|X|}
+    \hline
+    B & & Orsi & & Dani\\
+    \hline
+    B & Luca & Hanga & Luca & Luca\\
+    \hline
+    B & Benedek & Kartal & Gábor & Benedek\\
+    \hline
+    B & Gábor & Andris & Hanga & Kartal\\
+    \hline
+\end{tblr}
+
+\vspace{5mm}
+
+
+
+% vonal, fill, for, közepes
+\begin{center}
+\begin{tikzpicture}[x=1 cm, y=1cm, scale=0.32]
+\foreach \x in {-1,...,28}
+    \draw [line width=0.3pt] (\x,-3.)--(\x,16.5);
+\foreach \y in {-3,...,16}
+    \draw [line width=0.3pt] (-1.5,\y)--(28.5,\y);
+    \draw [line width=4pt] (-2,-3)--(29,-3);
+
+
+    \fill[color=red!30] (19,4) -- (25,4) -- (25,-1) -- (19,-1) -- cycle; 
+    \draw[line width=2pt] (19,4) -- (25,4) -- (25,-1) -- (19,-1) -- cycle;
+    
+    \fill[color=yellow!30] (4,4) -- (6,4) -- (6,-1) -- (4,-1) -- cycle; 
+    \draw[line width=2pt] (4,4) -- (6,4) -- (6,-1) -- (4,-1) -- cycle;
+    
+    \fill[color=blue!30] (19,10) -- (25,10) -- (25,6) -- (19,6) -- cycle; 
+    \draw[line width=2pt] (19,10) -- (25,10) -- (25,6) -- (19,6) -- cycle;
+    
+    \fill[color=green!30] (4,10) -- (6,10) -- (6,6) -- (4,6) -- cycle; 
+    \draw[line width=2pt] (4,10) -- (6,10) -- (6,6) -- (4,6) -- cycle;
+    
+    \fill[color=red!70] (17,15) -- (27,15) -- (27,12) -- (17,12) -- cycle; 
+    \draw[line width=2pt] (17,15) -- (27,15) -- (27,12) -- (17,12) -- cycle;
+    
+    \fill[color=yellow!70] (9,4) -- (17,4) -- (17,2) -- (9,2) -- cycle; 
+    \draw[line width=2pt] (9,4) -- (17,4) -- (17,2) -- (9,2) -- cycle;
+    
+    \fill[color=blue!70] (11,15) -- (15,15) -- (15,13) -- (11,13) -- cycle; 
+    \draw[line width=2pt] (11,15) -- (15,15) -- (15,13) -- (11,13) -- cycle;
+    
+    \fill[color=green!70] (9,10) -- (17,10) -- (17,7) -- (9,7) -- cycle; 
+    \draw[line width=2pt] (9,10) -- (17,10) -- (17,7) -- (9,7) -- cycle;
+    
+    \fill[color=gray!40] (2,15) -- (8,15) -- (8,12) -- (2,12) -- cycle; 
+    \draw[line width=2pt] (2,15) -- (8,15) -- (8,12) -- (2,12) -- cycle;
+
+\begin{Large}
+\node at (22,1.5) {A};
+\node at (5,1.5) {B};
+\node at (22,8) {C};
+\node at (5,8) {D};
+\node at (22,13.5) {E};
+\node at (13,3) {F};
+\node at (13,14) {G};
+\node at (13,8.5) {H};
+\node at (5,13.5) {I};
+\end{Large}
+
+\filldraw (5,15) circle (0.2);
+\filldraw (13,15) circle (0.2);
+\filldraw (22,15) circle (0.2);
+\filldraw (5,10) circle (0.2);
+\filldraw (13,10) circle (0.2);
+\filldraw (22,10) circle (0.2);
+\filldraw (5,4) circle (0.2);
+\filldraw (13,4) circle (0.2);
+\filldraw (22,4) circle (0.2);
+
+\end{tikzpicture}
+\end{center}
+
+\vspace{2mm}
+
+
+%táblázat
+\begin{center}
+\begin{tblr}{|c|c|c|c|}
+        \hline
+		Név & Születési év & Halálozási év \\
+		\hline
+		Albrecht Dürer & 1471 & 1528 \\ \hline
+		Arany Dániel & 1863 & 1945 \\ \hline
+		Bolyai Farkas & 1775 & 1856 \\ \hline
+		Bolyai János &  1802 & 1860 \\ \hline
+		Kalmár László &  1905 & 1976 \\ \hline
+		Kürschák József &  1864 & 1933 \\ \hline
+		Schweitzer Miklós &  1923 & 1945 \\ \hline
+		Surányi János &  1918 & 2006 \\ \hline
+		Varga Tamás &  1919 & 1987 \\ \hline
+		Zrínyi Ilona &  1643 & 1703 \\ \hline
+\end{tblr}
+\end{center}
+
+
+\href{https://durerinfo.hu/wp-content/uploads/2023/02/16KC_mo.pdf}{Eredeti feladatsor}
+
+\begin{minipage}{0.28\textwidth}
+\begin{center}
+\begin{tikzpicture}[scale=0.37, dot/.style={shape=coordinate}]
+    \node at (-1.5, 0) {\textbf{a)}};
+    \node[dot] (F1) at (0,0) {};
+    \node[dot] (F2) at (2,0) {};
+    \node[dot] (F3) at (3,0) {};
+    \node[dot] (F4) at (5,0) {};
+    \node[dot] (F5) at (6,0) {};
+    \node[dot] (F6) at (8,0) {};
+    \node[dot] (G1) at (0.5,0.866) {};
+    \node[dot] (G2) at (1.5,0.866) {};
+    \node[dot] (G3) at (3.5,0.866) {};
+    \node[dot] (G4) at (4.5,0.866) {};
+    \node[dot] (G5) at (6.5,0.866) {};
+    \node[dot] (G6) at (7.5,0.866) {};
+    \node[dot] (H1) at (0,1.732) {};
+    \node[dot] (H2) at (2,1.732) {};
+    \node[dot] (H3) at (3,1.732) {};
+    \node[dot] (H4) at (5,1.732) {};
+    \node[dot] (H5) at (6,1.732) {};
+    \node[dot] (I1) at (0.5,2.6) {};
+    \node[dot] (I2) at (1.5,2.6) {};
+    \node[dot] (I3) at (3.5,2.6) {};
+    \node[dot] (I4) at (4.5,2.6) {};
+    \node[dot] (J1) at (0,3.466) {};
+    \node[dot] (J2) at (2,3.466) {};
+    \node[dot] (J3) at (3,3.466) {};
+    \node[dot] (K1) at (0.5,4.332) {};
+    \node[dot] (K2) at (1.5,4.332) {};
+    \node[dot] (E1) at (0.5,-0.866) {};
+    \node[dot] (E2) at (1.5,-0.866) {};
+    \node[dot] (E3) at (3.5,-0.866) {};
+    \node[dot] (E4) at (4.5,-0.866) {};
+    \node[dot] (E5) at (6.5,-0.866) {};
+    \node[dot] (E6) at (7.5,-0.866) {};
+    \node[dot] (D1) at (0,-1.732) {};
+    \node[dot] (D2) at (2,-1.732) {};
+    \node[dot] (D3) at (3,-1.732) {};
+    \node[dot] (D4) at (5,-1.732) {};
+    \node[dot] (D5) at (6,-1.732) {};
+    \node[dot] (C1) at (0.5,-2.6) {};
+    \node[dot] (C2) at (1.5,-2.6) {};
+    \node[dot] (C3) at (3.5,-2.6) {};
+    \node[dot] (C4) at (4.5,-2.6) {};
+    \node[dot] (B1) at (0,-3.466) {};
+    \node[dot] (B2) at (2,-3.466) {};
+    \node[dot] (B3) at (3,-3.466) {};
+    \node[dot] (A1) at (0.5,-4.332) {};
+    \node[dot] (A2) at (1.5,-4.332) {};
+    \draw [line width=2.pt] (A1) -- (A2) -- (B2) -- (B3) -- (C3) -- (C4) -- (D4) -- (D5) -- (E5) -- (E6) -- (F6) -- (G6) -- (G5) -- (H5) -- (H4) -- (I4) -- (I3) -- (J3) -- (J2) -- (K2) -- (K1) -- (J1) -- (I1) -- (H1) -- (G1) -- (F1) -- (E1) -- (D1) -- (C1) -- (B1) -- (A1);
+    \draw [dashed,line width=1.pt] (C1)--(C2)--(B2);
+    \draw [dashed,line width=1.pt] (E1)--(E2)--(D2)--(D3)--(C3);
+    \draw [dashed,line width=1.pt] (G1)--(G2)--(F2)--(F3)--(E3)--(E4)--(D4);
+    \draw [dashed,line width=1.pt] (I1)--(I2)--(H2)--(H3)--(G3)--(G4)--(F4)--(F5)--(E5);
+    \draw [dashed,line width=1.pt] (C2)--(D2);
+    \draw [dashed,line width=1.pt] (E2)--(F2);
+    \draw [dashed,line width=1.pt] (G2)--(H2);
+    \draw [dashed,line width=1.pt] (I2)--(J2);
+    \draw [dashed,line width=1.pt] (D3)--(E3);
+    \draw [dashed,line width=1.pt] (F3)--(G3);
+    \draw [dashed,line width=1.pt] (H3)--(I3);
+    \draw [dashed,line width=1.pt] (E4)--(F4);
+    \draw [dashed,line width=1.pt] (G4)--(H4);
+    \draw [dashed,line width=1.pt] (F5)--(G5); 
+
+    \draw [orange,line width=1.pt] (C1)--(B2)--(D2)--(C1);
+    \draw [orange,line width=1.pt] (I1)--(H2)--(J2)--(I1);
+    \draw [orange,line width=1.pt] (F4)--(E5)--(G5)--(F4);
+    \draw [yellow,line width=1.pt] (E2)--(F3)--(G2)--(E2);
+    \draw [red,line width=1.pt] (F3)--(H3)--(G4)--(F3);
+    \draw [orange,line width=1.pt] (D3)--(E4)--(F3)--(D3);
+    \draw [blue,line width=1.pt] (F2)--(E3)--(G3)--(F2);
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.28\textwidth}
+\begin{center}
+\begin{tikzpicture}[scale=0.37, dot/.style={shape=coordinate}]
+    \node at (-4.5, 0) {\textbf{b)}};
+    \node[dot] (F9) at (-3,0) {};
+    \node[dot] (F0) at (-1,0) {};
+    \node[dot] (F1) at (0,0) {};
+    \node[dot] (F2) at (2,0) {};
+    \node[dot] (F3) at (3,0) {};
+    \node[dot] (F4) at (5,0) {};
+    \node[dot] (G9) at (-2.5,0.866) {};
+    \node[dot] (G0) at (-1.5,0.866) {};
+    \node[dot] (G1) at (0.5,0.866) {};
+    \node[dot] (G2) at (1.5,0.866) {};
+    \node[dot] (G3) at (3.5,0.866) {};
+    \node[dot] (G4) at (4.5,0.866) {};
+    \node[dot] (G5) at (6.5,0.866) {};
+    \node[dot] (H9) at (-3,1.732) {};
+    \node[dot] (H0) at (-1,1.732) {};   
+    \node[dot] (H1) at (0,1.732) {};
+    \node[dot] (H2) at (2,1.732) {};
+    \node[dot] (H3) at (3,1.732) {};
+    \node[dot] (H4) at (5,1.732) {};
+    \node[dot] (H5) at (6,1.732) {};
+    \node[dot] (I9) at (-2.5,2.6) {};
+    \node[dot] (I0) at (-1.5,2.6) {};
+    \node[dot] (I1) at (0.5,2.6) {};
+    \node[dot] (I2) at (1.5,2.6) {};
+    \node[dot] (I3) at (3.5,2.6) {};
+    \node[dot] (I4) at (4.5,2.6) {};
+    \node[dot] (J0) at (-1,3.466) {};
+    \node[dot] (J1) at (0,3.466) {};
+    \node[dot] (J2) at (2,3.466) {};
+    \node[dot] (J3) at (3,3.466) {};
+    \node[dot] (K1) at (0.5,4.332) {};
+    \node[dot] (K2) at (1.5,4.332) {};
+    \node[dot] (E9) at (-2.5,-0.866) {};
+    \node[dot] (E0) at (-1.5,-0.866) {};
+    \node[dot] (E1) at (0.5,-0.866) {};
+    \node[dot] (E2) at (1.5,-0.866) {};
+    \node[dot] (E3) at (3.5,-0.866) {};
+    \node[dot] (E4) at (4.5,-0.866) {};
+    \node[dot] (E5) at (6.5,-0.866) {};
+    \node[dot] (D9) at (-3,-1.732) {};
+    \node[dot] (D0) at (-1,-1.732) {};
+    \node[dot] (D1) at (0,-1.732) {};
+    \node[dot] (D2) at (2,-1.732) {};
+    \node[dot] (D3) at (3,-1.732) {};
+    \node[dot] (D4) at (5,-1.732) {};
+    \node[dot] (D5) at (6,-1.732) {};
+    \node[dot] (C9) at (-2.5,-2.6) {};
+    \node[dot] (C0) at (-1.5,-2.6) {};
+    \node[dot] (C1) at (0.5,-2.6) {};
+    \node[dot] (C2) at (1.5,-2.6) {};
+    \node[dot] (C3) at (3.5,-2.6) {};
+    \node[dot] (C4) at (4.5,-2.6) {};
+    \node[dot] (B0) at (-1,-3.466) {};
+    \node[dot] (B1) at (0,-3.466) {};
+    \node[dot] (B2) at (2,-3.466) {};
+    \node[dot] (B3) at (3,-3.466) {};
+    \node[dot] (A1) at (0.5,-4.332) {};
+    \node[dot] (A2) at (1.5,-4.332) {};
+    \draw [line width=2.pt] (A1) -- (A2) -- (B2) -- (B3) -- (C3) -- (C4) -- (D4) -- (E4) -- (F4) -- (G4) -- (H4) -- (I4) -- (I3) -- (J3) -- (J2) -- (K2) -- (K1) -- (J1) -- (J0) -- (I0) -- (I9) -- (H9) -- (G9) -- (F9) -- (E9) -- (D9) -- (C9) -- (C0) -- (B0) -- (B1) -- (A1);
+    \draw [dashed,line width=1.pt] (E9)--(E0)--(D0)--(D1)--(C1)--(C2)--(B2);
+    \draw [dashed,line width=1.pt] (G9)--(G0)--(F0)--(F1)--(E1)--(E2)--(D2)--(D3)--(C3);
+    \draw [dashed,line width=1.pt] (I0)--(H0)--(H1)--(G1)--(G2)--(F2)--(F3)--(E3)--(E4)--(D4);
+    \draw [dashed,line width=1.pt] (J1)--(I1)--(I2)--(H2)--(H3)--(G3)--(G4);
+    \draw [dashed,line width=1.pt] (C2)--(D2);
+    \draw [dashed,line width=1.pt] (E2)--(F2);
+    \draw [dashed,line width=1.pt] (G2)--(H2);
+    \draw [dashed,line width=1.pt] (I2)--(J2);
+    \draw [dashed,line width=1.pt] (D3)--(E3);
+    \draw [dashed,line width=1.pt] (F3)--(G3);
+    \draw [dashed,line width=1.pt] (H3)--(I3);
+    \draw [dashed,line width=1.pt] (C0)--(D0);
+    \draw [dashed,line width=1.pt] (E0)--(F0);
+    \draw [dashed,line width=1.pt] (G0)--(H0);
+    \draw [dashed,line width=1.pt] (B1)--(C1);
+    \draw [dashed,line width=1.pt] (D1)--(E1);
+    \draw [dashed,line width=1.pt] (F1)--(G1);
+    \draw [dashed,line width=1.pt] (H1)--(I1); 
+
+    \node[draw=none,fill=none] (DX1) at (-2,-1.732) {X};
+    \node[draw=none,fill=none] (DX2) at (1,-1.732) {X};
+    \node[draw=none,fill=none] (DX3) at (4,-1.732) {X};
+    \node[draw=none,fill=none] (GX4) at (-0.5,0.866) {X};
+    \node[draw=none,fill=none] (GX5) at (2.5,0.866) {X};
+    \node[draw=none,fill=none] (JX1) at (1,3.466) {X};
+    
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.37\textwidth}
+\begin{center}
+\begin{tikzpicture}[scale=0.37, dot/.style={shape=coordinate}]
+    \node at (-4.5, 0) {\textbf{c)}};
+    \node[dot] (F9) at (-3,0) {};
+    \node[dot] (F0) at (-1,0) {};
+    \node[dot] (F1) at (0,0) {};
+    \node[dot] (F2) at (2,0) {};
+    \node[dot] (F3) at (3,0) {};
+    \node[dot] (F4) at (5,0) {};
+    \node[dot] (F5) at (6,0) {};
+    \node[dot] (F6) at (8,0) {};
+    \node[dot] (G9) at (-2.5,0.866) {};
+    \node[dot] (G0) at (-1.5,0.866) {};
+    \node[dot] (G1) at (0.5,0.866) {};
+    \node[dot] (G2) at (1.5,0.866) {};
+    \node[dot] (G3) at (3.5,0.866) {};
+    \node[dot] (G4) at (4.5,0.866) {};
+    \node[dot] (G5) at (6.5,0.866) {};
+    \node[dot] (G6) at (7.5,0.866) {};
+    \node[dot] (H0) at (-1,1.732) {};   
+    \node[dot] (H1) at (0,1.732) {};
+    \node[dot] (H2) at (2,1.732) {};
+    \node[dot] (H3) at (3,1.732) {};
+    \node[dot] (H4) at (5,1.732) {};
+    \node[dot] (H5) at (6,1.732) {};
+    \node[dot] (I1) at (0.5,2.6) {};
+    \node[dot] (I2) at (1.5,2.6) {};
+    \node[dot] (I3) at (3.5,2.6) {};
+    \node[dot] (I4) at (4.5,2.6) {};
+    \node[dot] (J2) at (2,3.466) {};
+    \node[dot] (J3) at (3,3.466) {};
+    \node[dot] (E9) at (-2.5,-0.866) {};
+    \node[dot] (E0) at (-1.5,-0.866) {};
+    \node[dot] (E1) at (0.5,-0.866) {};
+    \node[dot] (E2) at (1.5,-0.866) {};
+    \node[dot] (E3) at (3.5,-0.866) {};
+    \node[dot] (E4) at (4.5,-0.866) {};
+    \node[dot] (E5) at (6.5,-0.866) {};
+    \node[dot] (E6) at (7.5,-0.866) {};
+    \node[dot] (D0) at (-1,-1.732) {};
+    \node[dot] (D1) at (0,-1.732) {};
+    \node[dot] (D2) at (2,-1.732) {};
+    \node[dot] (D3) at (3,-1.732) {};
+    \node[dot] (D4) at (5,-1.732) {};
+    \node[dot] (D5) at (6,-1.732) {};
+    \node[dot] (C1) at (0.5,-2.6) {};
+    \node[dot] (C2) at (1.5,-2.6) {};
+    \node[dot] (C3) at (3.5,-2.6) {};
+    \node[dot] (C4) at (4.5,-2.6) {};
+    \node[dot] (B2) at (2,-3.466) {};
+    \node[dot] (B3) at (3,-3.466) {};
+    \draw [line width=2.pt] (B2) -- (B3) -- (C3) -- (C4) -- (D4) -- (D5) -- (E5) -- (E6) -- (F6) -- (G6) -- (G5) -- (H5) -- (H4) -- (I4) -- (I3) -- (J3) -- (J2) -- (I2) -- (I1) -- (H1) -- (H0) -- (G0) -- (G9) -- (F9) -- (E9) -- (E0) -- (D0) -- (D1) -- (C1) -- (C2) -- (B2);
+    \draw [dashed,line width=1.pt] (G0)--(F0)--(F1)--(E1)--(E2)--(D2)--(D3)--(C3);
+    \draw [dashed,line width=1.pt] (H1)--(G1)--(G2)--(F2)--(F3)--(E3)--(E4)--(D4);
+    \draw [dashed,line width=1.pt] (I1)--(I2)--(H2)--(H3)--(G3)--(G4)--(F4)--(F5)--(E5);
+    \draw [dashed,line width=1.pt] (C2)--(D2);
+    \draw [dashed,line width=1.pt] (E2)--(F2);
+    \draw [dashed,line width=1.pt] (G2)--(H2);
+    \draw [dashed,line width=1.pt] (E0)--(F0);
+    \draw [dashed,line width=1.pt] (D1)--(E1);
+    \draw [dashed,line width=1.pt] (F1)--(G1);
+    \draw [dashed,line width=1.pt] (D3)--(E3);
+    \draw [dashed,line width=1.pt] (F3)--(G3);
+    \draw [dashed,line width=1.pt] (H3)--(I3);
+    \draw [dashed,line width=1.pt] (E4)--(F4);
+    \draw [dashed,line width=1.pt] (G4)--(H4);
+    \draw [dashed,line width=1.pt] (F5)--(G5);
+    
+    \node[draw=none,fill=none] (EX1) at (-0.5,-0.866) {X};
+    \node[draw=none,fill=none] (EX2) at (2.5,-0.866) {X};
+    \node[draw=none,fill=none] (EX3) at (5.5,-0.866) {X};
+    \node[draw=none,fill=none] (HX4) at (1,1.732) {X};
+    \node[draw=none,fill=none] (HX5) at (4,1.732) {X};
+
+    
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+
+\usetikzlibrary{shapes, calc} %Ezek a tikz hasznos alcsomagjai.
+\begin{minipage}[b][][b]{0.02\textwidth}
+\hspace{1mm}
+\end{minipage}
+\begin{minipage}[b][][b]{0.1\textwidth}
+\begin{minipage}{0.1\textwidth}
+\begin{tikzpicture}[dot/.style={circle, draw, fill, inner sep=1.5pt}, pentagon/.style={regular polygon, regular polygon sides=5, draw}]
+    \node[dot] {};
+    \node at (0,-0.4) {$k=1$};
+\end{tikzpicture}
+\end{minipage}%
+\vspace{3mm}
+
+\begin{minipage}[b][][b]{0.1\textwidth}
+\begin{tikzpicture}[dot/.style={circle, draw, fill, inner sep=1.5pt}, pentagon/.style={regular polygon, regular polygon sides=5, draw}]
+\node[pentagon, minimum size=30] (C) {};
+\foreach \x in {0}{
+    \node[dot] at ($(C.corner 1)!\x!(C.corner 2)$) {};
+    \node[dot] at ($(C.corner 2)!\x!(C.corner 3)$) {};
+    \node[dot] at ($(C.corner 3)!\x!(C.corner 4)$) {};
+    \node[dot] at ($(C.corner 4)!\x!(C.corner 5)$) {};
+    \node[dot] at ($(C.corner 5)!\x!(C.corner 1)$) {};
+    \node at (0,-0.8) {$k=2$};
+}
+\end{tikzpicture}
+\end{minipage}%
+\end{minipage}
+\begin{minipage}[b][][b]{0.15\textwidth}
+\begin{tikzpicture}[dot/.style={circle, draw, fill, inner sep=1.5pt}, pentagon/.style={regular polygon, regular polygon sides=5, draw}]
+\node[pentagon, minimum size=60] (B) {};
+\node[pentagon, minimum size=30, anchor=corner 1] (C) at (B.corner 1) {};
+\foreach \x in {0,0.5}{
+    \node[dot] at ($(B.corner 1)!\x!(B.corner 2)$) {};
+    \node[dot] at ($(B.corner 2)!\x!(B.corner 3)$) {};
+    \node[dot] at ($(B.corner 3)!\x!(B.corner 4)$) {};
+    \node[dot] at ($(B.corner 4)!\x!(B.corner 5)$) {};
+    \node[dot] at ($(B.corner 5)!\x!(B.corner 1)$) {};
+}
+\foreach \x in {0}{
+    \node[dot] at ($(C.corner 1)!\x!(C.corner 2)$) {};
+    \node[dot] at ($(C.corner 2)!\x!(C.corner 3)$) {};
+    \node[dot] at ($(C.corner 3)!\x!(C.corner 4)$) {};
+    \node[dot] at ($(C.corner 4)!\x!(C.corner 5)$) {};
+    \node[dot] at ($(C.corner 5)!\x!(C.corner 1)$) {};
+    \node at (0,-1.3) {$k=3$};
+}
+\end{tikzpicture}
+\end{minipage}%
+\begin{minipage}[b][][b]{0.2\textwidth}
+\begin{tikzpicture}[dot/.style={circle, draw, fill, inner sep=1.5pt}, pentagon/.style={regular polygon, regular polygon sides=5, draw}]
+\node[pentagon, minimum size=90] (A) {};
+\node[pentagon, minimum size=60, anchor=corner 1] (B) at (A.corner 1) {};
+\node[pentagon, minimum size=30, anchor=corner 1] (C) at (A.corner 1) {};
+\foreach \x in {0,0.3333,0.6666}{
+    \node[dot] at ($(A.corner 1)!\x!(A.corner 2)$) {};
+    \node[dot] at ($(A.corner 2)!\x!(A.corner 3)$) {};
+    \node[dot] at ($(A.corner 3)!\x!(A.corner 4)$) {};
+    \node[dot] at ($(A.corner 4)!\x!(A.corner 5)$) {};
+    \node[dot] at ($(A.corner 5)!\x!(A.corner 1)$) {};
+}
+\foreach \x in {0,0.5}{
+    \node[dot] at ($(B.corner 1)!\x!(B.corner 2)$) {};
+    \node[dot] at ($(B.corner 2)!\x!(B.corner 3)$) {};
+    \node[dot] at ($(B.corner 3)!\x!(B.corner 4)$) {};
+    \node[dot] at ($(B.corner 4)!\x!(B.corner 5)$) {};
+    \node[dot] at ($(B.corner 5)!\x!(B.corner 1)$) {};
+}
+\foreach \x in {0}{
+    \node[dot] at ($(C.corner 1)!\x!(C.corner 2)$) {};
+    \node[dot] at ($(C.corner 2)!\x!(C.corner 3)$) {};
+    \node[dot] at ($(C.corner 3)!\x!(C.corner 4)$) {};
+    \node[dot] at ($(C.corner 4)!\x!(C.corner 5)$) {};
+    \node[dot] at ($(C.corner 5)!\x!(C.corner 1)$) {};
+    \node at (0,-1.7) {$k=4$};
+}
+\end{tikzpicture}
+\end{minipage}
+
+\vspace{2mm}
+
+\vspace{2mm}
+
+
+
+\vspace{2mm}
+
+% vonal, pont, for, egyszerű
+ \begin{tikzpicture}[scale = 0.8]
+        \draw[gray] (-0.4,-0.4) grid (3.4,3.4);
+        \foreach \x in {0,1,2,3}
+            \foreach \y in {0,1,2,3}
+                \fill (\x,\y) circle (3pt);
+        \draw [line width=2] (0,0) -- (3,1) -- (1,1) --(2,2) -- (0,3) -- cycle;    
+    \end{tikzpicture}
+
+\vspace{2mm}
+
+% pont, vonal, fill, bonyolult
+\begin{center}
+\newcommand{\ketdk}[2]
+{
+\filldraw[fill opacity = 0.2](#1,#2)--(1+#1,#2)--(1+#1,1+#2)--(#1,1+#2)--cycle;
+\fill (0.2+#1,0.2+#2) circle (2pt);
+\fill (0.8+#1,0.8+#2) circle (2pt)
+}
+\newcommand{\egydk}[2]
+{
+\filldraw[fill opacity = 0.2](#1,#2)--(1+#1,#2)--(1+#1,1+#2)--(#1,1+#2)--cycle;
+\fill (0.5+#1,0.5+#2) circle (2pt)
+}
+
+\newcommand{\haromdk}[2]
+{
+\filldraw[fill opacity = 0.2](#1,#2)--(1+#1,#2)--(1+#1,1+#2)--(#1,1+#2)--cycle;
+\fill (0.5+#1,0.5+#2) circle (2pt);
+\fill (0.2+#1,0.2+#2) circle (2pt);
+\fill (0.8+#1,0.8+#2) circle (2pt)
+}
+\newcommand{\negydk}[2]
+{
+\filldraw[fill opacity = 0.2] (#1,#2)--(1+#1,#2)--(1+#1,1+#2)--(#1,1+#2)--cycle;
+\fill (0.2+#1,0.2+#2) circle (2pt);
+\fill (0.8+#1,0.8+#2) circle (2pt);
+\fill (0.2+#1,0.8+#2) circle (2pt);
+\fill (0.8+#1,0.2+#2) circle (2pt)
+}
+\newcommand{\otdk}[2] %OTDK haha!
+{
+\filldraw[fill opacity = 0.2] (#1,#2)--(1+#1,#2)--(1+#1,1+#2)--(#1,1+#2)--cycle;
+\fill (0.5+#1,0.5+#2) circle (2pt);
+\fill (0.2+#1,0.2+#2) circle (2pt);
+\fill (0.8+#1,0.8+#2) circle (2pt);
+\fill (0.2+#1,0.8+#2) circle (2pt);
+\fill (0.8+#1,0.2+#2) circle (2pt)
+}
+\newcommand{\hatdk}[2]
+{
+\filldraw[fill opacity = 0.2] (#1,#2)--(1+#1,#2)--(1+#1,1+#2)--(#1,1+#2)--cycle;
+\fill (0.2+#1,0.2+#2) circle (2pt);
+\fill (0.8+#1,0.8+#2) circle (2pt);
+\fill (0.2+#1,0.8+#2) circle (2pt);
+\fill (0.8+#1,0.2+#2) circle (2pt);
+\fill (0.2+#1,0.5+#2) circle (2pt);
+\fill (0.8+#1,0.5+#2) circle (2pt)
+}
+
+\begin{tikzpicture}[scale=0.6]
+\clip(-3.8,-1.9) rectangle (18.1,4.1);
+%\fill[opacity = 0] (-0.2,-0.2) rectangle (3.2,3.2);
+
+%elölről:
+\otdk{0}{0};
+\ketdk{0}{1};
+\ketdk{1}{0};
+\negydk{1}{1};
+\hatdk{1}{2};
+\ketdk{2}{0};
+\hatdk{2}{1};
+
+%oldalról:
+\hatdk{5}{0};
+\haromdk{6}{0};
+\negydk{6}{1};
+\egydk{7}{0};
+\ketdk{7}{1};
+\haromdk{7}{2};
+
+%felülről:
+\negydk{10}{1};
+\haromdk{11}{0};
+\ketdk{11}{2};
+\otdk{12}{1}; 
+
+    \draw[->, line width=1.5] (11.5,-1) -- (11.5,-0.3);
+    \draw (11.5,-1.5) node {elölnézet iránya};
+    
+    \draw[->, line width=1.5] (14,1.5) -- (13.3,1.5);
+    \draw (14,1.5) node [right] {oldalnézet};
+    \draw (14,0.5) node [right] {iránya};
+
+    \draw (-1,3.8) node [right] {Elölről:};
+    \draw (4,3.8) node [right] {Oldalról:};
+    \draw (9,3.8) node [right] {Felülről:};
+    
+\end{tikzpicture}
+\end{center}
+
+\vspace{2mm}
+
+
+% vonalak, fill, bonyolultabb
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,scale = 0.9]
+\clip(-0.1,-0.1) rectangle (12.1,5.1);
+\fill[opacity = 0.25] (1,1) rectangle (11,4);
+
+\draw [line width=1.5 pt] (0,0) rectangle (1,5);
+\foreach \i in {0,1,2,3,4}
+\draw [line width=1.5 pt] (1,\i) rectangle (11,1+\i);
+\draw [line width=1.5 pt] (11,0) rectangle (12,5);
+\draw [line width=2pt] (0,0) rectangle (12,5);
+\foreach \i in {0,1,2,3,4}
+{
+    \draw[dashed,<->] (2,\i) -- (2,\i+1);
+    \draw (2.5,\i+0.5) node {1 m};
+}
+\draw[dashed,<->] (0,1.5) -- (1,1.5);
+\draw (0.5,1.1) node {1 m};
+\draw[dashed,<->] (11,1.5) -- (12,1.5);
+\draw (11.5,1.1) node {1 m};
+\draw (5.5,4.5) node {$H_1$};
+\draw (5.5,0.5) node {$H_3$};
+\draw (5.5,3.5) node {$R_1$};
+\draw (5.5,2.5) node {$R_2$};
+\draw (5.5,1.5) node {$R_3$};
+\draw (0.5,2.5) node {$H_2$};
+\draw (11.5,2.5) node {$H_4$};
+\end{tikzpicture}
+\end{center}
+
+\vspace{2mm}
+
+
+% szög, ellenpélda?
+\begin{tikzpicture}
+    \draw[line width = 1.5] (-2,0) -- (2,0) -- (0,6.15)--cycle;
+    \draw[line width = 1.5] (2,0) -- (-1.23,2.35);
+    \fill (0,6.16) circle (0.1) node [above left] {$A$};
+    %\fill (-3,0) circle (0.1) node [below left] {$B_2$};
+    \fill (2,0) circle (0.1) node [below right] {$C$};
+    \fill (-2,0) circle (0.1) node [below left] {$B_2$};
+    \fill (-1.23,2.35) circle (0.1) node [above left] {$B_1$};
+    \draw (-0.615,4.255) node [left] {$a$};
+    \draw (0.385,1.175) node [below left] {$a$};
+    \draw (0,0) node [below] {$a$};
+    \draw (1,3.075) node [above right] {$b$};
+    \draw[shift={(-2,0)}] (0,0) -- (0:1) arc (0:72:1) -- cycle;
+    \draw[shift={(-2,0)}] (0,0) -- (0:1.1) arc (0:72:1.1) -- cycle;
+    \draw (-1.5,0.3) node {$72^\circ$};
+    \draw[shift={(-1.23,2.35)}] (0,0) -- (-36:1) arc (-36:-108:1) -- cycle;
+    \draw[shift={(-1.23,2.35)}] (0,0) -- (-36:1.1) arc (-36:-108:1.1) -- cycle;
+    \draw (-1,1.7) node {$72^\circ$};
+    \draw[shift={(0,6.15)}] (0,0) -- (-72:1.5) arc (-72:-108:1.5) -- cycle;
+    \draw (0,5) node {$36^\circ$};
+    \draw[shift={(2,0)}] (0,0) -- (180:1.6) arc (180:144:1.6) -- cycle;
+    \draw (1,0.3) node {$36^\circ$};
+    \draw[shift={(2,0)}] (0,0) -- (144:1.9) arc (144:108:1.9) -- cycle;
+    \draw (1.2,1.1) node {$36^\circ$};
+    \draw[shift={(-1.23,2.35)}] (0,0) -- (-36:0.5) arc (-36:72:0.5) -- cycle;
+    \draw[shift={(-1.23,2.35)}] (0,0) -- (-36:0.6) arc (-36:72:0.6) -- cycle;
+    \draw[shift={(-1.23,2.35)}] (0,0) -- (-36:0.7) arc (-36:72:0.7) -- cycle;
+    \draw (-0.1,2.6) node {$108^\circ$};
+\end{tikzpicture}
+
+\href{https://durerinfo.hu/wp-content/uploads/2023/02/16KEp_mo.pdf}{Ellenpéldák, amikor nem érdemes tikz-ben csinálni az ábrát.}
+
+\end{document}

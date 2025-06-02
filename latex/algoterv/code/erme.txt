@@ -1,0 +1,10 @@
+f(n, m):
+    M[0][0] = 1
+    for i = 1 ... m:
+        E[i] = e_i
+    for i = 1 ... m:
+        for j = 1 ... n:
+            M[i][j] = M[i][j] + M[i-1][j]
+            if j - E[i] >= 0:
+                M[i][j] = M[i][j] + M[i][j - E[i]]
+    return M[m][n]

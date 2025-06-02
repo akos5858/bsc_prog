@@ -1,0 +1,676 @@
+\documentclass{article}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{defin}[theorem]{Definition}
+\newtheorem{conj}[theorem]{Conjecture}
+
+\usepackage{amsmath,amssymb, amsfonts}
+\usepackage[margin=1.5in]{geometry}
+%\usepackage[magyar]{babel}
+\usepackage{mathrsfs}
+
+\begin{document}
+
+\section{Introduction}
+
+We will be considering the properties of a dynamical system presented in the third problem of the Schweitzer Miklós competition 2022. The transformation $T:\: [ 0,\infty ) \rightarrow [0, \infty)$ is linear on every positive integer interval, and it's integer values are defined as follows:
+\begin{equation}
+T(n)=
+	\begin{cases}
+		0 & \text{if } 2|n\\
+		4^{\ell}+1 & \text{if } n\nmid 2,\, 4^{\ell - 1}\leq n < 4^{\ell} \: (\ell \in \mathbb{Z}^+) 
+	\end{cases}
+\end{equation}
+
+Multiple properties will be true for wider classes of transformations...
+
+\begin{defin}
+The function $\ell:\: \mathbb{R}_{\geq 0} \rightarrow \mathbb{N}$ is defined as follows:\[
+\ell(x) = \inf\{n\in \mathbb{Z}^+:\: x \leq 4^n \}
+\]
+\end{defin}
+
+\section{Symbolic dynamics}
+
+\begin{defin}
+A closed integer interval is $I_n = [n-1, n]$ for $n\in \mathbb{Z}^+$.
+\end{defin}
+
+\begin{defin} \label{symbolinterval}
+Given a not neccessariliy finite positive integer sequence $(i_0,...)$ we denote $I_{i_0...} = \bigcap_{n=0}^{\infty} T^{-n}(I_{i_n})$.
+\end{defin}
+
+\begin{lemma}\label{Rendszer}
+The following are true for $I_{i_0...i_n}$:
+\begin{enumerate}
+\item $I_{i_0...i_n}$ is an interval and for all $1 \leq k\leq n$ integers $T^k(I_{i_0...i_n}) = I_{i_k...i_n}$.
+\item For all other $(j_0...j_n)$ $I_{i_0...i_n}^\circ \cap I_{j_0...j_n}^\circ = \emptyset$.
+\item $I_{i_0...i_n} = \bigcup_{k=1}^{4^{\ell(i_n)}+1} I_{i_0...i_nk}$
+\item The sets $I_{i_0...i_nk}$ where $k \in \mathbb{Z} \cap [1,4^{\ell(i_n)}+1]$ are placed in a row in increasing or decreasing order.
+\item The above sets are in increasing order if and only if there is an even number of even numbers among $i_0 ... i_n$.
+\item For all $I_{i_0...i_nk}$ where $k \notin \mathbb{Z} \cap [1,4^{\ell(i_n)}+1]$, $( I_{i_0...i_nk}^\circ \cap I_{i_0...i_n}^\circ ) = \emptyset$.
+\item For all $I_{i_0...i_nk}$ where $k \in \mathbb{Z} \cap [1,4^{\ell(i_n)}+1]$, $( I_{i_0...i_nk}^\circ \cap I_{i_0...i_n}^\circ ) \neq \emptyset$.
+\item For a point $x \in \mathbb{R}_{\geq 0}$ exists a natural $k$ for which $T^k(x)\in \mathbb{N}$ if and only if for some finite positive integer sequence $(i_0,...i_k)$ $x \in \partial I_{i_0...i_k}$.
+\item If $( I_{i_0...i_nk}^\circ \cap I_{i_0...i_n}^\circ ) \neq \emptyset$ then $\lambda(I_{i_0...i_nk}) = \frac{1}{4^{\ell(i_n)}+1} \lambda(I_{i_0...i_n})$
+\item For all infinite $(i_0, i_1, ...)$ integer sequences $I_{i_0i_1...}$ is either empty, or has exactly one element.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+These proposition all follow straight from the definition of $T$.
+\end{proof}
+
+\begin{defin}
+Let the itinerary of $x\in \mathbb{R}_{\geq0}$ be the lexicographically smallest $(i_0, i_1 ...)$ positive integer sequence satisfying that $x \in I_{i_0i_1...}$. Let this be $\underline{i}(x)$.
+\end{defin}
+
+\begin{lemma}
+The function $\underline{i}(x): \: \mathbb{R}_{\geq 0} \rightarrow \mathbb{N}^ \mathbb{N}$ is an injective and well defined function.
+\end{lemma}
+
+\begin{proof}
+Every point $x$ is an element of $I_{i_0i_1...}$ for at least one positive integer sequence. Since the set of positive integer sequences is well-ordered by the  lexicographic ordering $\underline{i}(x)$ is well defined. Since $I_{i_0i_1...}$ either has one or zero elements for all integer sequences then $\underline{i}(x)$ must be injective.
+\end{proof}
+
+\begin{lemma} \label{egesz}
+If for a positive integer sequence $(i_0, i_1 ...)$ there is some positive integer $n$, for which $i_n = 4^k +1, i_{n+1} = 4^{k+1}+1 ...$, for $k= \ell(i_{n-1})$ or $1 = i_n = i_{n+1} = ...$, then if $I_{i_{n-1}i_{n}...}$ is nonempty then it's only element is $i_{n-1}-1$ or $i_{n-1}$.
+\end{lemma}
+
+\begin{proof}
+From the definition $i_{n-1}-1,i_{n-1} \in I_{i_{n-1}}$, thus from lemma \ref{Rendszer}  : $T^{-(n-1)}(i_{n-1}-1) \cap I_{i_0...i_{n-1}} \neq \emptyset \neq T^{-(n-1)}(i_{n-1}) \cap I_{i_0...i_{n-1}}$. Since $i_{n-1}-1$ and $i_{n-1}$ are the two ends of $I_{i_{n-1}}$ the image of one of them is 0, while the image of the other is $4^{\ell(i_{n-1})}+1$. In one of these cases $1 = i_n = i_{n+1} = ...$, while in the other case $i_n = 4^k +1, i_{n+1} = 4^{k+1}+1 ...$, for $k= \ell(i_{n-1})$. $I_{i_{n-1}i_{n}...}$ can only have one element, and $i_{n-1}-1$ or $i_{n-1}$ is an element of it. This proves the statement.
+\end{proof}
+
+\begin{defin}
+Let $\Omega_T = \{\underline{i}(x):\: x \in \mathbb{R}_{\geq 0}\}$ be the space of allowed symbolic trajectories.
+\end{defin}
+
+\begin{theorem}
+The space $\Omega_T$ is composed of exactly those positive integer sequences satisfying:
+
+\begin{enumerate}
+	\item $i_{n+1} \in [1, 4^{\ell(i_{n})}+1]$
+	\item If there is some positive integer $n$, for which $i_n = 4^k +1, i_{n+1} = 4^{k+1}+1 ...$, for $k= \ell(i_{n-1})$, then $i_{n-1}$ is odd. 
+	\item If there is some positive integer $n$, for which $1 = i_n = i_{n+1} = ...$, then $i_{n-1}$ is even.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+It follows from lemma \ref{Rendszer} that for all $(i_0,...)$ positive integer sequences satisfying the first condition $I_{i_0...}$ is nonempty, and has only one element.\\
+
+We show that if $(i_0,...)$ and $(j_0...)$ positive integer sequences satisfy all three conditions, then $I_{i_0...} \cap I_{j_0...}= \emptyset$.\\
+
+We also show that for all $x$ there exists an $(i_0...)$ positive integer sequence satisfying all three conditions for which $x\in I_{i_0...}$ and $(i_0,...)$ is the lexicographycally smallest $(j_0,...)$ integer sequence for which $x\in I_{j_0...}$\\
+
+These two facts together imply that for all $x$ $\underline{i}(x)$ satisfies all three conditions and that for all positive integer sequences $(i_0,...)$ satisfying all three conditions there exists an $x$ such that $\underline{i}(x) = (i_0,...)$\\ 
+
+Let us split the remaining proof into two cases. Let us pick an $x \in \mathbb{R}_{\geq 0}$\\
+
+The first case is when for all $k\in \mathbb{N}$ $T^k(x) \in I_n^\circ$ for some positive integer $n$. This is the same as saying, that there are no integers in the orbit of $x$ from lemma \ref{Rendszer}. In this case there can only be one $\underline{i}$ sequence for which $x \in I_{\underline{i}}$ is fulfilled, because for all $k$ $T^k(x)\in I_n^\circ$ for some $n$ and the interior of integer intervals does not intersect, so $n$ must be unique. 
+From this if $\underline{i} = (i_0, i_1, ...)$, then for all $n$ $I_{i_0...i_n}^\circ \cap I_{i_0...i_ni_{n+1}}^\circ \neq \emptyset$ must be met, which from lemma \ref{Rendszer} implies the first condition to be true.
+From lemma \ref{egesz} if there are no integers in the orbit of $x$ then condition two and three are automatically met.\\
+
+The second case is of those $x$ points which eventually reach an integer. Let us assume that $n-1$ is the smallest integer for which $T^{n-1}(x)$ is an integer. Then $T^n(x)=0$ or $T^n(x) = 4^{\ell(i_{n-1})} +1$ and $(i_0, ... i_{n-2})$ is unique if $x \in I_{i_0, ... i_{n-2}}$.\\
+
+If $T^n(x)=0$ then $T^{n-1}(x)$ is an even number. Here $i_{n-1}$ can be chosen to be two neighbouring integers for $x \in I_{i_0...i_{n-1}}$ to be true. Of these the even one gives a sequence lexicographically smaller. Since all other elements of the orbit of $x$ are zero all other elements of the sequence are unique if $x\in I_{i_0...}$ is met. From this condition three is met, and condition two is automatically met.\\
+
+If $T^n(x) = 4^{\ell(i_{n-1})} +1$ then $T^{n-1}(x)$ is an odd number. From here $i_{n-1}$ can be chosen to be two neighbouring integers for $x \in I_{i_0...i_{n-1}}$ to be true. Of these the odd one gives a sequence lexicographically smaller. In this case for all $n < N \in \mathbb{N}$  $T^N(x) = 4^{\ell(i_{N-1})} +1$. For the first condition to be met, and to satisfy $x \in I_{i_0...}$ $i_N$ has to be $4^{\ell(i_{N-1})} +1$. Thus all three conditions are met for the lexicographycally smallest possible sequence, and there are no other $(j_0,...)$ positive integer sequences satisfying $x \in I_{j_0...}$ satisfying all three conditions. 
+\end{proof}
+
+\begin{cor}
+$\underline{i}:\: \mathbb{R}_{\geq0} \rightarrow \Omega_T$ is bijection.
+\end{cor}
+
+\begin{defin}
+Let $\underline{i}^{-1}:\:  \Omega_T \rightarrow \mathbb{R}_{\geq0}$ be the inverse of $\underline{i}$. Let $\sigma : \:\Omega_T \rightarrow \Omega_T $ be the shift operator.
+\end{defin}
+
+\begin{cor}
+For all $x \in \mathbb{R}_{\geq 0}$ $\underline{i}(T(x)) = \sigma(\underline{i}(x))$ and for all $(i_0,...) \in \Omega_T$ $T(\underline{i}^{-1}((i_0,...)))=\underline{i}^{-1}(\sigma((i_0,...)))$
+\end{cor}
+
+\begin{theorem}
+If for some $x$ the orbit of $\underline{i}(x)$ is periodic with the shift operator then the orbit of $x$ is periodic as well.
+\end{theorem}
+
+\begin{proof}
+If $\underline{i}(x)$ is $i_0...i_ni_0...i_n...$, then $x \in I_{i_0...i_ni_0...i_n...}$ and $f^{n+1}(x) \in I_{i_0...i_ni_0...i_n...}$. This means that $x = f^{n+1}(x)$, so the orbit of $x$ has period $n$.
+\end{proof}
+
+
+\section{Frobenius-Perron operator and Markov-partitions}
+
+\begin{defin}
+Given a measure space $(X, \Sigma, \mu)$ and a map $f:\: X \rightarrow X$, the pushforward of $\mu$ is $\mu \circ f^{-1}$.
+\end{defin}
+
+Let our measure space $X$ be some measureable subset of the reals and the $\sigma$-algebra be the corresponding Lebesgue $\sigma$-algebra. Given a density $\rho :\: X \rightarrow \overline{\mathbb{R}_{\geq 0}}$ let for all $H \in \mathscr{L}( X )$ $\mu(H) = \int_H \rho\, d\lambda$ meaning that $\mu \ll \lambda$. In that case the $(\mu \circ f^{-1})(H) = \int_{f^{-1}(H)} \rho\, d\lambda$.
+
+\begin{defin}
+The Frobenius-Perron operator for transformation $f:\: X \rightarrow X$ maps the space of measurable $X \rightarrow \overline{\mathbb{R}_{\geq 0}}$ functions onto itself such that:\[
+P_f(\rho) = \frac{d}{dx} \int_{f^{-1}(H)} \rho\, d\lambda
+\] 
+\end{defin}
+
+In other words for a density $\rho$ it gives the density of the pushforward measure. Another well-known form of the operator is the following:\[
+P_f(\rho)(x) = \sum_{z \in f^{-1}(x)} \frac{\rho(z)}{|f'(z)|}
+\]
+
+\begin{defin} \label{Markovpart}
+Given an $X$ measureable subset of the reals  and measurable $f:\: X\rightarrow X$ the dynamical system $(X, f)$ has a Markov-partition if there exists $\mathscr{H}$ countable set of closed subintervals of $\mathbb{R}$ with nonempty interior such that the following are true:
+\begin{enumerate}
+\item For all $A, B \in \mathscr{H}$ if $A \neq B$ then $A^\circ \cap B^\circ = \emptyset$.
+\item $X = \cup \mathscr{H}$.
+\item For all $A \in \mathscr{H}$ exists $\mathscr{A} \subseteq \mathscr{H}$ such that $f(H)^\circ = \cup \mathscr{A}^\circ$.
+\item The function $f$ is linear on the interior of all $H \in \mathscr{H}$.
+\end{enumerate}
+\end{defin}
+Note that this definition differs slightly from ones in the literature.
+
+\begin{defin}
+Let $(X, f)$ be a dynamical system with a Markov-partition $\{H_k\}_{k\in \mathbb{Z}^+}= \mathscr{H}$.  Let $P = (p_{ij})$ be it's transition matrix if the following are met:
+\begin{enumerate}
+\item If $P$ is an $n\times n$ matrix, where $n\in \mathbb{Z^+}$, then $n = |\mathscr{H}|$. If $\mathscr{H}$ is countably infinite, then $P=(p_{ij})_{i,j\in \mathbb{Z^+}}$.
+\item For $i,j$ where $H_j^\circ \subseteq f(H_i)$ it is true that $p_{ij} = \frac{\lambda(H_j)}{\lambda(H_i) |f'(H_i)|}$ where $f'(H_i)$ is the slope of $f$ on the interior of $H_i$. $p_{ij}$ is zero otherwise. 
+\end{enumerate}
+\end{defin}
+
+\begin{cor}
+The transition matrix is always row-stochastic.
+\end{cor}
+
+\begin{theorem} \label{perron}
+Given an absolutely continous measure $\mu$ with a finite density $\rho$, let $\rho$ be constant on the interiors of all elements of $\mathscr{H}$. Let the constant of $H_i$ be $c_i$, and the row vektor $[c_1,c_2...]=C$, and $\Lambda$ be the row vektor $[\lambda (H_1), \lambda (H_2),...]$.
+In this case for all $k\in \mathbb{N}$:\[
+P_f^k(\rho)|_{H_j^\circ} = \frac{((C\cdot \Lambda)P^k)_j}{\lambda(H_j)}
+\]
+\end{theorem}
+
+\begin{proof}
+Both expressions are linear in terms of $C$ so first let us assume that $\rho = 1$ on $H_i^\circ$ for some $i$ and zero otherwise. Let us start with $k=1$. Now the left hand side is as follows:\[
+P_f(\rho)|_{H_j^\circ}(x) = \sum_{z \in f^{-1}(x) \cap H_j^\circ} \frac{c_i \chi_{H_i^\circ}(z)}{|f'(H_i)|} =
+\begin{cases}
+		0 & \text{if } p_{ij}=0\\
+		\frac{c_i}{|f'(H_i)|} & \text{otherwise}
+	\end{cases}
+\]
+The right hand side is as follows: \[
+\frac{c_i \lambda(H_i) p_{ij}}{\lambda(H_j)} =  \begin{cases}
+		0 & \text{if } p_{ij}=0\\
+		\frac{c_i}{|f'(H_i)|} & \text{otherwise}
+	\end{cases}
+\]
+
+This proves the statement for $k=1$. Let $C^{(k)} = [c_0^{(k)},...]$ be the vector of constants of the $k$-th pushforward. The vector $\Lambda$ does not depend on the measure, only the space itself. In this case:\[
+P_f^{k+1}(\rho)|_{H_j^\circ} =
+\begin{cases}
+		0 & \text{if } p_{ij}=0\\
+		\frac{c_i^{(k)}}{|f'(H_i)|} & \text{otherwise}
+	\end{cases} 
+= \frac{c_i^{(k)} \lambda(H_i) p_{ij}}{\lambda(H_j)}
+\]
+This by induction proves the theorem for all $k$.
+\end{proof}
+
+This basically relates a dynamical system with a Markov-partition to a Markov-chain, hence the name of this property. This is extremely useful in finding absolutely continous invariant measures of a system.
+
+\begin{cor}
+A $v$ row-eigenvector of $P$ associated with the eigenvalue 1 defines (almost everywhere) an invariant absolutely continous $\mu$ measure of $f$ with density $\rho$ in the following way:\[
+\rho|_{H_i^\circ}(x) = \frac{v_i}{\lambda(H_i)}
+\]
+\end{cor}
+
+The transition matrix defines a Markov-chain with countable states. The elements of the matrix are called the transition probabilities. About the convergence of these values the following are known [citation]:
+
+\begin{defin}
+The following are parameters of the Markov-chain defined by $P$:
+\begin{enumerate}
+\item $p_{ij}^{(k)}=(P^k)_{i,j}$
+\item $f_{ij}^{(n)} = \sum_{m_k \in \mathbb{Z}^+ \setminus \{ j \}} p_{im_1}p_{m_{n-1}j}\prod_{k=2}^{n-1}p_{m_{k-1}m_k}$ the probability of starting from $i$ and taking a path arriving at $j$ for the first time after $n$ steps.
+\item $f_{ij}^* = \sum_{n=1}^{\infty} f_{ij}^{(n)}$
+\item $m_i = \sum_{n=1}^{\infty} nf_{ii}^{(n)}$
+\item $d_i = gcd\{n: p_{ii}^{(n)}\neq 0\}$ the period of state $i$
+\item $f_{ij}^*(r) = \sum_{n=1}^{\infty} f_{ij}^{(nd_i+r)}$
+\end{enumerate}
+\end{defin}
+
+\begin{theorem}[Villő Csiszár citation] \label{Villo}
+For all $r \in \{1,...d_j\}$ \[ \lim_{n\rightarrow \infty} p_{ij}^{(nd_j+r)}=f_{ij}^*(r) \frac{d_j}{m_j}
+\]
+\end{theorem} 
+
+\begin{cor} \label{Hatar}
+If the $P$ matrix defines an aperiodic irreducible Markov-chain, then the pointwise limit of $P^{k}$ exists as $k$ goes to infinity. If additionally $f^*_{ii} = 1$ for all $i$ then all the columns of $\lim_{n\rightarrow \infty} P^k$ are constant, so there is a row vector $w$ such that for all $v$ stochastic row vectors of sufficient dimension $\lim_{n\rightarrow \infty} vP^k = w$ coordinatewise. 
+\end{cor}
+
+\begin{proof}
+If $P$ is aperiodic, then $d_j = 1$ for all $j$ so from theorem \ref{Villo} $\lim_{n\rightarrow \infty} p_{ij}^{(n)}$ exists for all $i,j$. The value of $d_j$ and $m_j$ only depend on the value of $j$ so they are constant throughtout a column. With irreducibility we have that for all $i,j$ $p_{ij}^{(n)}\neq 0$ for some $n$. Since $f^*_{ii} = 1$ we have that we return infinitely many times from $i$ to $i$ with a probability of 1. From this $f_{ij}^* =1$ for all $i, j$. This makes $\lim_{n\rightarrow \infty} p_{ij}^{(n)}$ independent of $i$. From this for all $v$ stochastic vectors $\lim_{k\rightarrow \infty} (vP^k)_i = \lim_{k\rightarrow \infty} p_{1i}^{(k)}$
+\end{proof}
+
+\begin{cor} \label{eloszlas}
+Let $\pi :\: \mathscr{L}(X) \rightarrow \overline{\mathbb{R}_{\geq 0}} $ be an absolutely continous measure whith density $t$ where:\[
+t|_{H_i^\circ(x)} = \frac{\lim_{k\rightarrow \infty} p_{ii}^{(k)}}{\lambda(H_i)} 
+\]
+
+If $\mu:\: \mathscr{L}(X)\rightarrow \overline{\mathbb{R}_{\geq 0}} $ is an absolutely continous measure with density $\rho$ where $\mu(X) < \infty$ and $\rho$ is constant on $H_i^\circ$ for all $i$, then for all $A \in \mathscr{L}(X)$ $\lim_{k\rightarrow \infty}\mu(f^{-k}(A)) = \mu(X) \pi(A)$, given that $P$ satisfies all conditions in corollary \ref{Hatar}.
+\end{cor}
+
+\begin{proof}
+This follows straight from theorem \ref{perron} and corollary \ref{Hatar}.
+\end{proof}
+
+\begin{cor}
+$0 \leq \pi(X) \leq 1$
+\end{cor}
+
+\section{Expansive Markov-partitions} \label{generalmarkov}
+
+\begin{defin}
+Let $(X,f)$ be a dynamical system with a Markov-partition $\mathscr{H}$ as in definition \ref{Markovpart}. Let the elements of $\mathscr{H}$ be $H_i$ where $i$ is a positive integer. Then for a positive integer sequence of not neccessarily finite length $(i_0, i_1, ...)$ define:\[
+H_{i_0i_1...} = \bigcap_{n=0}^{\infty} f^{-n}(H_{i_n})
+\]
+Note the similarity with definition \ref{symbolinterval}. If the sequence is finite then we only intersect finitely many sets.
+\end{defin}
+
+\begin{lemma} \label{Rendszer2}
+The following are true for $H_{i_0...i_n}$:
+\begin{enumerate}
+\item $H_{i_0...i_n}$ is an interval and for all $1 \leq k\leq n$ integers $f^k(H_{i_0...i_n}) = H_{i_k...i_n}$.
+\item For all other $(j_0...j_n)$ $H_{i_0...i_n}^\circ \cap H_{j_0...j_n}^\circ = \emptyset$.
+\item $H_{i_0...i_n} = \bigcup_{k: H_k^\circ \subseteq f(H_{i_n})} H_{i_0...i_nk}$
+%\item The sets $H_{i_0...i_nk}$ where $k \in \{k:H_k^\circ \subseteq f(H_{i_n}) \}$ are placed in a row in increasing or decreasing order inside of $H_{i_0...i_n}$
+%\item The above sets are in increasing order if and only if there is an even number of $k$ elements among $i_0 ... i_n$ such that $f$ on $H_k$ is decreasing.
+\item For all $H_{i_0...i_nk}$ where $k \notin \{k:H_k^\circ \subseteq f(H_{i_n}) \}$, $( H_{i_0...i_nk}^\circ \cap H_{i_0...i_n}^\circ ) = \emptyset$.
+\item For all $H_{i_0...i_nk}$ where $k \in \{k:H_k^\circ \subseteq f(H_{i_n}) \}$, $( H_{i_0...i_nk}^\circ \cap H_{i_0...i_n}^\circ ) \neq \emptyset$.
+\item If $( H_{i_0...i_nk}^\circ \cap H_{i_0...i_n}^\circ ) \neq \emptyset$ then $\lambda(H_{i_0...i_nk}) = \frac{\lambda(H_{k})}{f'(H_{i_n})} \lambda(H_{i_0...i_n})$
+\end{enumerate}
+\end{lemma}
+
+\begin{defin}
+The dynamical system $(X,f)$ is said to have an expansive Markov-partition, if for all $\delta > 0$ and $I \subseteq X$ interval there is a finite set of positive integer sequences of finite length $(i^{(1)}_0,...i^{(1)}_{n_1}), ... , (i^{(N)}_0,...i^{(N)}_{n_N})$ for which: \[
+\lambda( I \Delta \bigcup_{k=1}^N H_{i^{(k)}_0...i^{(k)}_{n_k}} ) < \delta
+\]
+\end{defin}
+
+A sufficient condition for an expansive Markov-partition if the measure of the sets of the partition is bounded and there is some $\varepsilon > 0$ that the slope of $f$ is greater than $1+\varepsilon$ on all sets.
+
+\begin{theorem} \label{nagyhatar}
+We have a dynamical system $(X, f)$ which has a $\mathscr{H}$ expansive Markov-partition, defining an aperiodic irreducible Markov-chain which satisfies the conditions for corollary \ref{Hatar}. Let $\pi :\: \mathscr{L}(X) \rightarrow \overline{\mathbb{R}_{\geq 0}} $ be the absolutely continous stationary measure with density $t$ defined in corollary \ref{eloszlas}. Let $\mu:\: \mathscr{L}(X) \rightarrow \overline{\mathbb{R}_{\geq 0}}$ be an absolutely continous measure with $\mu(X) < \infty$. In this case for all $A \in \mathscr{L}(X)$ it is true that $\lim_{n\rightarrow \infty}\mu(f^{-n}(A)) =\mu(X)\pi(A)$.
+\end{theorem} 
+
+\begin{proof}
+Let the density of $\mu$ be $g$, such that $\mu(H)=\int_H g d\lambda$. Let us approximate $g$ by $\phi$ simple function in the following way: \[
+\phi = \sum_{k=1}^n c_k \chi_{E_k} \quad
+\forall H \in \mathscr{L}( \mathbb{R^+} ) \: \bigg| \int_H \phi \, d\lambda - \int_H g \, d\lambda \bigg| < \varepsilon
+\]
+
+Here $E_k$ are measurable subsets of $X$ and $\chi_{E_k}$ is the characteristic function of $E_k$. Now we approximate $E_k$ set by a union of finitely many closed intervals $R$ such that $\lambda(E_k \Delta R) < \delta$. 
+
+\begin{lemma}
+For all $\delta > 0$ and $E_k$ there is a union of finitely many closed intervals $R$ such that $\lambda(E_k \Delta R) < \delta$.
+\end{lemma}
+\begin{proof}
+From the definition of the Lebesgue outer measure we can pick an $\{R_i\}_{i\in \mathbb{Z^+}}$ cover of $E_k$ with countably many closed intervals for which $E_k \subseteq \bigcup_{i\in \mathbb{Z^+}} R_i$ and $\sum_{i\in \mathbb{Z^+}} \lambda(R_i) < \lambda(E_k) + \frac{\delta}{2}$. In this case there is finite subcover $R = \cup \{R_{i_k}\}_{k = 1}^N$ for which $R \Delta \bigcup_{i\in \mathbb{Z^+}} R_i < \frac{\delta}{2}$. In this case $\lambda(E_k \Delta R) < \delta$.
+\end{proof}
+
+From this $g$ can be approximated arbitrarily well by a function which is the linear combination of characteristic functions of finitely many closed intervals. Since $\mathscr{H}$ is expansive we can do it with intervals labelled by finite sequences as well.\\
+
+Let us pick such an $m$ approximation of $g$. Let $M(H) = \int_H m\,d\lambda$. In this case $M$ measure is an approximation of $\mu$. For all $\varepsilon > 0$ we can pick $m$ such that $\forall H \in \mathscr{L}(X) \quad | M(H) - \mu(H) | < \varepsilon$.
+
+\begin{lemma} \label{push}
+If $\mu:\: \mathscr{L}(X) \rightarrow \overline{\mathbb{R}_{\geq 0}}$ such that $\mu(A) = \lambda(A \cap H_{i_0...i_n})$ then $\mu(f^{-n}(A)) = c \cdot \lambda(A \cap H_{i_n})$ for some $c \in \mathbb{R}_{\geq 0}$.
+\end{lemma}
+
+Since $m$ is a linear combination of characteristic functions of finitely many labelled intervals there is a number $N$ for which if $n>N$ then $P_f^{(n)}(m)$ is a linear combination characteristic functions of finitely many elements of $\mathscr{H}$.\\
+
+This also means that for all $H \in \mathscr{L}(X)$ there is an $N$, such that if $n>N$ then $|M(f^{-n}(H)) - M(X) \pi(H)| < \varepsilon$. Then $|\mu(f^{-n}(H)) - M(X) \pi(H)| < 2\varepsilon$. Then $|\mu(X)\pi(H) - M(X) \pi(H)| < \varepsilon \pi(H) \leq \varepsilon$. From these $|\mu(f^{-n}(H)) - \mu(X) \pi(H)| < 3\varepsilon$.
+\end{proof}
+
+\begin{cor} \label{mix}
+A dynamical system wich satisfies all conditions of theorem \ref{nagyhatar} with the corresponding $\pi$ measure is mixing.
+\end{cor}
+
+\begin{proof}
+Define the measure $\mu(H) = \pi(H \cap B)$ for all $H \in \mathscr{L}(X)$ and some $B \in \mathscr{L}(X)$. From theorem \ref{nagyhatar}:\[
+\lim_{k \rightarrow \infty} \mu(f^{-k}(A)) = \mu(X)\pi(A)
+\]
+For all $A \in \mathscr{L}(X)$. This can be rewrote as:\[
+\lim_{k \rightarrow \infty} \pi(f^{-k}(A) \cap B) = \pi(B)\pi(A)
+\]
+This is the definition of mixing.
+\end{proof}
+
+\begin{theorem}
+Missing! If the Markov-chain is irreducible and has at least one positive recurrent state then all states are positive recurrent. This implies that $\pi(H)=0$ implies $\lambda(H)=0$. Otherwise if all states are null recurrent, then $\pi(H)=0$ for all $H \in \mathscr{L}(X)$.
+\end{theorem}
+
+From now on it is assumed that there is a given dynamical system $(X,f)$ with the properties stated in theorem \ref{nagyhatar} and that all states of the Markov-chain defined by it's partition are positive recurrent.
+
+\begin{theorem}
+If there exists an $E \in \mathscr{L}(X)$, such that $\lambda( f(E) \setminus E ) = 0$, then either $E$ or it's complement $X\setminus E = E^c$ has measure 0.
+\end{theorem}
+
+\begin{proof}
+Let us assume indirectly that such a set $E$ exists such that $\lambda(E)\neq 0 \neq \lambda(E^c)$. Define a measure $\mu(H) = \pi(H \cap E)$. Then $0 < \mu(X) = \pi(E) < \infty$ and $\mu$ is absolutely continous. Then from theorem \ref{nagyhatar} $\lim_{n\rightarrow \infty}\mu(f^{-n}(E^c)) = \pi(E^c)\cdot \mu(X) = \pi(E^c)\cdot \pi(E) > 0$.\\
+
+At the same time $\lambda( f(E) \setminus E ) = 0$. In other words $f(E) \setminus E = \{c\in E^c: \exists e\in E: f(e)=c\} = f^ {-1}(E^c) \cap E$. If $\lambda(f^ {-1}(E^c) \cap E) = 0$ then $\pi(f^ {-1}(E^c) \cap E) = 0$ so $\lim_{n\rightarrow \infty}\mu(f^{-n}(E^c)) = 0$. This is a contradiction.
+\end{proof}
+
+\begin{theorem}
+If $\mu$ is an absolutely continous invariant measure of $X$ and $\mu(X) = \infty$ and if $\pi(H)=0$ implies $\lambda(H)=0$ then for all $A \in \mathscr{L}(X),\, \lambda(A)\neq 0$ it is true that  $\mu(A)=\infty$.
+\end{theorem}
+
+\begin{proof}
+\begin{lemma}
+Let $g$ be the density of $\mu$ and $O = \{x\in X: g(x)=\infty\}$. If $\lambda(O) = 0$ then for all $N$ exists 
+$E\subset X$ measurable set, such that $\infty > \mu(E) > N$.
+\end{lemma}
+
+\begin{proof}
+Let us first observe the sequence $\int_{[-n,n]\cap X} g\, d\lambda$. If $n$ goes to infinity the limit must be infinity. If there is an $N$ such that there is no such $n$ where $\infty > \int_{[-n,n]\cap X} g\, d\lambda > N$, then there exists an $N_0$ for which $\int_{[-N_0,N_0]\cap X} g\, d\lambda = \infty$. Then let $A_k = \{x \in [-N_0,N_0]\cap X:\: g(x)<k\}$. $\lim_{k\rightarrow \infty} \mu(A_k) = \infty$ but $\mu(A_k) < 2N_0k$, so there must be a $K$ for all $N$ such that $\infty > \mu(A_K) > N$.
+\end{proof}
+
+If $\mu(X)=\infty$ and for all $N$ exists 
+$E\subset X$ measurable set, such that $\infty > \mu(E) > N$, then let $\mu'(H) = \mu(H \cap E)$. Now $\mu(H) = \mu'(H) + \mu(H \cap E^c)$ and $\mu'(X) < \infty$. Now for all $H \in \mathscr{L}(X)$ set $\lim_{n\rightarrow \infty} \mu(f^{-n}(H)) = \mu(H)$, because $\mu$ is an invariant measure. Also $\mu(H) = lim_{n\rightarrow \infty} \mu(f^{-n}(H)) \geq lim_{n\rightarrow \infty} \mu'(f^{-n}(H)) > N\cdot \pi(H)$.\\
+
+If there is an $N$ such that we can not find a set with a finite measure greater than $N$, then from the previous lemma $O = \{x\in X: g(x)=\infty\}$ and $\lambda(O) > 0$. If $\lambda(O^c) = 0$ then we are ready. If $O$ and $O^c$ has non-zero measure, then $f^{-1}(O) \cap O^c$ has non-zero measure. In that case $\mu$ can not be invariant since there exists $E \subset f(O) \setminus O$ such that $\lambda(E) \neq 0$ and $\mu(E) < \infty$. $E$ is the image of a subset of $O$. Since $E$ has non-zero measure then the set the image of which it is must also have non-zero measure. This means that $f^{-1}(E)\cap O$ has non-zero measure thus $\mu(f^{-1}(E))=\infty$.
+\end{proof}
+
+\section{Applications onto our system}
+
+\begin{theorem}
+The closed integer intervals form an expansive Markov-partition of $(\mathbb{R}_{\geq 0}, T)$.
+\end{theorem}
+
+\begin{proof}
+The properties established in lemma \ref{Rendszer} satisfy all conditions needed.
+\end{proof}
+
+\begin{theorem}
+The transition matrix $P = (p_{ij})$ of $(\mathbb{R}_{\geq 0}, T)$ if the Markov-partition is the closed integer intervals is the following:\[
+p_{ij} =
+\begin{cases}
+		\frac{1}{4^{ \ell (i) }+1} & \text{if } j \in [1, 4^{\ell(i)}+1]\\
+		0 & \text{otherwise } 
+	\end{cases}
+\]
+\end{theorem}
+
+This Markov-chain will be irreducible and aperiodic. By finding a stationary distribution, all the coordinates of which are positive we will also show that all states are positive recurrent.
+
+\begin{defin}
+The $n.$ step of the function is a closed interval, which is the union of closed integer intervals the image of which is identical. Explicitly:\[
+L_1 = [0, 4] \quad
+L_n = [4^{n-1}, 4^n]
+\]
+Let $\mathscr{L}_n$ be the set of indices of those $I_k$ integer intervals for which $I_k \subset L_n$. 
+
+%This way $\cup \mathscr{L}_n = L_n$
+\end{defin}
+
+Let us construct the transition matrix of a new Markov-chain the states of which will represent the "steps" of the function $T$. Explicitly $S=(s_{ij})$ where $s_{ij}=p_{4^i 4^j}$. Let for a countably infinite dimensional stochastic row vector $v = (v_1, v_2, ...)$ the countably infinite dimensional stochastic row vector $w^{(v)} = (w^{(v)}_1, w^{(v)}_2, ...)$ be defined such that $w^{(v)}_k = \sum_{i \in \mathscr{L}_k}v_i$. This way $w^{(v)}S = w^{(vP)}$.
+
+It is interesting to study the $S$ matrix a bit more generally. Let us introduce a base $E\in \mathbb{Z}_{\geq 2}$. Originally $E$ is four. Let $\Lambda(1)=E$ and $\Lambda(k)=(E-1)E^{k-1}$, if $k>1$. Let $s_{ij}=0$, if $j>i+1$, $\frac{1}{E^i+1}$ if $j=i+1$ and $\frac{\Lambda(j)}{E^i + 1}$ if $j \leq i$. Now if $E=4$ then $S$ is unchanged.\\
+
+\begin{theorem}
+The only possible $q = (q_1, q_2, ...)$ stochastic infinite dimensional row vector, for which $q = qS$ is where:\[
+q_1 =\frac{1}{2} \quad q_{k+1}=\frac{E}{E^k+1}q_{k}
+\]
+This is equivalent to saying that it is the only stationary distribution of the Markov-chain $S$ defines.
+\end{theorem}
+
+\begin{proof}
+Let us pick any $q = (q_1, q_2, ...)$ stochastic infinite dimensional row vector. Let $qS^n = q^{(n)} = (q^{(n)}_1, q^{(n)}_2,...)$. We can write up the following recursion:
+\[
+q_k^{(n)}=\frac{1}{E^{k-1}+1}q_{k-1}^{(n-1)}+\sum_{i=k}^{\infty} \frac{\Lambda(k)}{E^i+1}q_i^{(n-1)}
+\]
+Let us rewrite this as:
+\[
+q_{k+1}^{(n)}=\frac{\Lambda(k+1)}{\Lambda(k)}(q_{k}^{(n)}-\frac{1}{E^{k-1}+1}q_{k-1}^{(n-1)}-\frac{\Lambda(k)}{E^k+1}q_{k}^{(n-1)})+\frac{1}{E^k+1}q_k^{(n-1)}
+\]
+For a stationary distribution $q_k^{(n)}=q_k^{(m)}$, so we can omit the exponent in the recursion. If $k>1$, then from the previous recursion for a stationary distribution:
+\[
+q_{k+1}=\frac{E^k+E+1}{E^k+1}q_k-\frac{E}{E^{k-1}+1}q_{k-1}
+\]
+
+Let us add smaller terms to the equation. We will add the term to the left side and we will add to the right side it's form according to the previous recursion. We get the following:
+\[
+\sum_{k=3}^n q_k = \sum_{k=3}^{n-1} q_k + \frac{E}{E^{n-1}}q_{n-1}+q_2-\frac{E}{E+1}q_1
+\]
+Let $n$ go to infinity. Since the vector is stochastic it's coordinates form a convergent series:
+\[
+\sum_{k=3}^{\infty} q_k = \sum_{k=3}^{\infty} q_k +q_2-\frac{E}{E+1}q_1
+\]
+\[
+\frac{E}{E+1}q_1 =  q_2 
+\]
+
+From here the recursion in the proposition follows by induction. We only need to find the value of $q_1$. For this we sum the elements of the distribution in terms of $q_1$.\\
+
+Let $q_{k+1}=a_{k+1}q_1$. Now:
+\[
+a_{k+1}=\frac{E^k}{\prod_{i=1}^{k}E^i+1}
+\]
+Now, if $n=1$, then $\sum_{k=1}^n a_k=2-\frac{a_n}{E^{n-1}}$. If this is true for $n=N$, then it is also true for $n=N+1$. Since the error term goes to zero the sum equals two, so the value of $q_1$ must be $\frac{1}{2}$ independent of $E$.\\
+
+\end{proof}
+
+From here we can find the only possible stationary distribution of $P$ as well. From now on we assume that $E = 4$ for simplicity, however the result can be easily generalized. 
+
+\begin{theorem}
+The only possible $p = (p_1, p_2, ...)$ stochastic infinite dimensional row vector, for which $p = pP$ is where:\[
+p_n = 
+\begin{cases}
+ \frac{1}{2E} & \text{if } n \in \{1,...,5\}\\
+ \frac{1}{E^{k-1}(E^{k-1}+1)}q_{k-1} & \text{if } k>1 \text{ and } n-1 \in \mathscr{L}_k 
+\end{cases}
+\]
+This is equivalent to saying that it is the only stationary distribution of the Markov-chain $P$ defines.
+\end{theorem}
+
+\begin{proof}
+We can deduce that if $a,b \in \{1,...,5\}$ or $a,b \in \{4^{k-1}+2, 4^k+1\}$ for some $k$, then $p_a = p_b$ must be true since for all $i$ $p_{ia}=p_{ib}$ in this case. We also know that $q_n = \sum_{k \in \mathscr{L}_n} p_k$. From this $p_1 =...=p_5 = \frac{1}{2E} =\frac{1}{8}$.\\
+
+Now let us observe a step, other than the first one. Let $p'$ be $p_k$ where $k$ is the smallest element of some $\mathscr{L}_n$. Let $p = p_k$ for any other element of $\mathscr{L}_n$. Now: \[
+p'=p+\frac{1}{E^{k-1}+1}q_{k-1}
+\]
+\[
+q_k=\frac{E}{E^{k-1}+1}q_{k-1}=(E-1)E^{k-1}p + \frac{1}{E^{k-1}+1}
+\]
+From here $p = \frac{1}{E^{k-1}(E^{k-1}+1)}q_{k-1}$ és $p'=\frac{1}{E^{k-1}}q_{k-1}$. From here the proposition follows.
+\end{proof}
+
+According to the theorem \ref{nagyhatar} this stationary distribution gives a $\pi:\:\mathscr{L}(\mathbb{R}_{\geq0}) \rightarrow \mathbb{R}_{\geq 0}$ invariant measure for the system $(\mathbb{R}_{\geq 0}, T)$. For this measure if $\mu$ is an absolutely continous measure such that $\mu(\mathbb{R}_{\geq 0})<\infty$, then for all $H \in \mathscr{L}( \mathbb{R}_{\geq 0} ) \quad \lim_{n\rightarrow \infty}\mu(f^{-n}(H)) =\mu(\mathbb{R}_{\geq 0})\pi(H)$. This also means that the system is mixing from corollary \ref{mix}. Since $\pi$ is such that $\pi(H) = 0$ implies $\lambda(H) = 0$ for measurable subsets of the domain, from theorems of section \ref{generalmarkov} the only absolutely continous invariant measures of the system are those wich are constant multiples of $\pi$ or infinite for all non-null sets.
+
+\begin{cor}
+The orbit of almost every point is dense in $\mathbb{R}_{\geq 0}$.
+\end{cor}
+\begin{proof}
+This is implied by mixing.
+\end{proof}
+
+\section{Orbit of rationals}
+
+In this section we are concerned with $(X, f)$ dynamical systems for which a subset of the closed integer intervals forms a Markov-partition. Now we allow negative numbers to be the indices of integer intervals as well. To avoid amiguity when talking about integer intervals in this more general sense the notation $J_n$ and $J_{i_0i_1...} = \bigcap_{k=0}^{\infty}f^{-k}(J_{i_k})$ will be used, so that $I_n$ and $I_{i_0...}$ will be preserved to describe the original dynamical system. We also assume that $f(J_k)^\circ$ is composed of the interiors of at least two integer intervals. This makes the partition expansive. For convenience it is assumed that the function is continous from left or right at every integer. In this case a bit more general form of lemma \ref{Rendszer} is still true.
+
+\begin{lemma} \label{Rendszer3}
+The following are true for $J_{i_0...i_n}$:
+\begin{enumerate}
+\item $J_{i_0...i_n}$ is an interval and for all $1 \leq k\leq n$ integers $T^k(J_{i_0...i_n}) = J_{i_k...i_n}$.
+\item For all other $(j_0...j_n)$ $J_{i_0...i_n}^\circ \cap J_{j_0...j_n}^\circ = \emptyset$.
+\item $J_{i_0...i_n} = \bigcup_{k: I_k^\circ \subseteq f(J_{i_n})} J_{i_0...i_nk}$
+\item The set $\{k: J_k^\circ \subseteq f(J_{n})\}$ for all integer $n$ is a set of consecutive integers.
+\item The sets $J_{i_0...i_nk}$ where $k \in \{k: J_k^\circ \subseteq f(J_{i_n})\}$ are placed in a row in increasing or decreasing order.
+\item The above sets are in increasing order if and only if there is an even number of numbers among $i_0 ... i_n$ on the corresponding integer interval of which $f$ is decreasing.
+\item For all $J_{i_0...i_nk}$ where $k \notin \{k: J_k^\circ \subseteq f(J_{i_n})\}$, $( J_{i_0...i_nk}^\circ \cap J_{i_0...i_n}^\circ ) = \emptyset$.
+\item For all $J_{i_0...i_nk}$ where $k \in \{k: J_k^\circ \subseteq f(J_{i_n})\}$, $( J_{i_0...i_nk}^\circ \cap J_{i_0...i_n}^\circ ) \neq \emptyset$.
+\item For a point $x \in X$ exists a natural $k$ for which $f^k(x)\in \mathbb{Z}$ if and only if for that $k$ and for some $n\in \mathbb{Z}$ $f^k(x) \in \partial J_n$.
+\item If $( J_{i_0...i_nk}^\circ \cap J_{i_0...i_n}^\circ ) \neq \emptyset$ then $\lambda(J_{i_0...i_nk}) = \frac{1}{\#\{k: J_k^\circ \subseteq f(J_{i_n})\}} \lambda(J_{i_0...i_n})$
+\item For all infinite $(i_0, i_1, ...)$ integer sequences $J_{i_0i_1...}$ is either empty, or has exactly one element.
+\end{enumerate}
+\end{lemma}
+
+\begin{defin}
+Let us observe a finite $i_0i_1...i_n$ integer sequence for which $J_{i_0...i_n}^\circ$ is non-empty. This interval is partitioned by $J_{i_0...i_na}, J_{i_0...i_n(a+1)}, ... ,J_{i_0...i_nb}$ intervals where the set $\{k: J_k^\circ \subseteq f(J_{i_n})\}$ consists of the integers from $a$ to $b$. In accordance with lemma \ref{Rendszer3} if there is an even number of numbers among $i_0 ... i_n$ on the corresponding integer interval of which $f$ is decreasing then $a<b$ otherwise $a>b$. If $a<b$ then we say that the direction of $J_{i_0...i_n}$ is forward, otherwise it is backward.
+\end{defin}
+
+\begin{defin}
+Let the itinerary of $x\in X$ be the lexicographically smallest $(i_0, i_1 ...)$ positive integer sequence satisfying that $x \in I_{i_0i_1...}$. Let this be $\underline{i}(x)$.
+\end{defin}
+
+\begin{lemma}
+The function $\underline{i}(x): \: X \rightarrow \mathbb{N}^ \mathbb{N}$ is an injective and well defined function.
+\end{lemma}
+
+\begin{proof}
+Every point $x$ is an element of $J_{i_0i_1...}$ for at least one positive integer sequence. For all $n$ $f^n(x)$ can only be the element of two integer intervals at most. By always chosing the lower option we get the lexicographycally smallest itinerary. Since $J_{i_0i_1...}$ either has one or zero elements for all integer sequences then $\underline{i}(x)$ must be injective.
+\end{proof}
+
+\begin{defin}
+Let $\Omega_f = \{\underline{i}(x):\: x \in X\}$ be the space of allowed symbolic trajectories.
+\end{defin}
+
+\begin{cor}
+$\underline{i}:\: X \rightarrow \Omega_f$ is bijection.
+\end{cor}
+
+\begin{defin}
+Let $\underline{i}^{-1}:\:  \Omega_f \rightarrow X$ be the inverse of $\underline{i}$. Let $\sigma : \:\Omega_f \rightarrow \Omega_f $ be the shift operator.
+\end{defin}
+
+\begin{cor}
+For all $x \in X$ $\underline{i}(f(x)) = \sigma(\underline{i}(x))$ and for all $(i_0,...) \in \Omega_f$ $f(\underline{i}^{-1}((i_0,...)))=\underline{i}^{-1}(\sigma((i_0,...)))$
+\end{cor}
+
+\begin{theorem}
+If for some $x$ the orbit of $\underline{i}(x)$ is periodic with the shift operator then the orbit of $x$ is periodic as well.
+\end{theorem}
+
+\begin{proof}
+If $\underline{i}(x)$ is $i_0...i_ni_0...i_n...$, then $x \in J_{i_0...i_ni_0...i_n...}$ and $f^{n+1}(x) \in J_{i_0...i_ni_0...i_n...}$. This means that $x = f^{n+1}(x)$, so the orbit of $x$ has period $n+1$.
+\end{proof}
+
+\begin{defin}
+Let $L_k(x)$ and $U_k(x)$ be the k. lower and upper regressors of $x$ meaning that: \[
+L_k(x) = \inf\{y\in Y:\: J_{\underline{i}(x)_0...\underline{i}(x)_k}\}
+\]
+\[
+U_k(x) = \sup\{y\in Y:\: J_{\underline{i}(x)_0...\underline{i}(x)_k}\}
+\]
+Where $\underline{i}(x)_n$ is the $n+1$. element of the sequence $\underline{i}(x)$.
+\end{defin}
+
+We will primarily only be using the lower regressor.
+
+\begin{defin}
+Let $d_k(x) = L_k(x) - L_{k-1}(x)$ for $k\geq1$.
+\end{defin}
+
+\begin{theorem}
+Let $\underline{i}(x) = (i_0,i_1...)$. For some $a_n, M_n \in \mathbb{Z}$ $d_n(x) = \frac{a_n}{M_n}$ where $M_n = \prod_{k=0}^{n-1} \#\{p: J_p^\circ \subseteq f(J_{i_k})\} $ and $a_n$ is the number we assign to $J_{i_0...i_n}$ if we assign numbers from 0 going through the sets $J_{i_0...i_{n-1}k}$ with non-empty interior from left to right.
+\end{theorem}
+
+\begin{proof}
+Ehhez lehet a legokosabb ábrát rajzolni
+\end{proof}
+
+\begin{cor}
+$\lim_{k\rightarrow \infty} L_k(x) = x$ and $L_0(x) + \sum_{k=1}^\infty d_k(x) = x$.
+\end{cor}
+
+\begin{theorem}
+All numbers which have an eventually periodic orbit are rational.
+\end{theorem}
+
+\begin{proof}
+The preimage of a rational number to $f$ is a set of rationals and the image of a rational is rational. This is because on the interior of an integer interval $f(x) = ax+b$ where $b$ is an integer and $a$ is rational. This means that it suffices to show that all periodic points are rational.\\
+
+Let $\underline{i}(x)=(i_0,i_1...)$. Let it be $n$ periodic. Now it is also $2n$ periodic. Among $i_0...i_{2n-1}$ there must be an even number of numbers on the corresponding integer interval of which $f$ is decreasing. This implies that the corresponding $a_k$ sequence of $x$ is $2n$ periodic. The sequence $\#\{p: J_p^\circ \subseteq f(J_{i_k})\}$ in terms of $k$ is $2n$ periodic as well. From here if $L_{2n-1}(x) = \frac{c}{M_{2n-1}}$ then $x = c\sum_{k=1}^\infty \frac{1}{M_{2n-1}^k} = \frac{c}{(1 - M_{2n-1})M_{2n-1}}$.
+\end{proof}
+
+\begin{theorem} \label{bondolt}
+The orbit of all the rationals for which $\liminf_{k\rightarrow \infty} |f^k(x)| < \infty$ are eventually periodic.
+\end{theorem}
+
+\begin{proof}
+Let $x = \frac{p}{q}$ and $q$ be positive. Let $\underline{i}(x)=(i_0,i_1...)$. Now $a_k$ is defined as previously. Let $m_n$ be $\#\{k: J_k^\circ \subseteq f(J_{i_n})\}$ Now: \[
+x=\sum_{n=0}^{\infty} \frac{a_n}{\prod_{k=0}^{n-1}m_k}
+\]
+
+Let us denote that we divide $a$ by $b$ with remainder as $a \div b$. Now let $a_0 = p \div q$ and $r_0 = p - qa_0$. Now: \[
+a_{k+1} = m_k r_k \div q
+\]\[
+r_{k+1} = m_k r_k - q a_{k+1}
+\]
+
+\begin{lemma}
+If $r_a = r_b$ and $m_a = m_b$ and $J_{i_0...i_a}$ and $J_{i_0...i_b}$ intervals have the same direction and $i_a = i_b$, then $a_{a+1}=a_{b+1},\; r_{a+1}=r_{b+1},\; m_{a+1}=m_{b+1}, \; i_{a+1}=i_{b+1}$ and $J_{i_0...i_{a+1}}$ and $J_{i_0...i_{b+1}}$ have the same direction.
+\end{lemma}
+
+\begin{proof}
+The first two equations are implied by the recursion. If $m_a = m_b$, then on $J_{i_a} = J_{i_b}$ the codomain of $f$ is the same. Since $J_{i_0...i_{a}}$ and $J_{i_0...i_{b}}$ have the same direction, then this also implies that $i_{a+1}=i_{b+1}$. Now $J_{i_0...i_{a+1}}$ and $J_{i_0...i_{b+1}}$ obviously have the same direction.
+\end{proof}
+
+From this it follows by induction that if for $a$ and $b$ non-negative integers the conditions of the lemma apply, then for all positive integers $i_{a+n} = i_{b+n}$ so the orbit is eventually periodic by $|a-b|$. The conditions of the lemma will apply to every rational with a bounded orbit for some $a$ and $b$. If the orbit is bounded there can only be finitely many different $m_k$ values, let the number of these be $N$. There can only be $q$ different remainders of integers divided by $q$. The direction of an interval can again also have two values and in the bounded region the value of $i_k$ also can only have finitely many different values, let this be $M$. This implies that in the first $2MqN+1$ steps for two indices all the conditions will apply.\\
+
+If the orbit is not bounded, but the limit infinum of the magnitude of it is finite then there will be a bounded region into which we step in infinitely many times. Each time the value of $m_k$ is from the same finite set with cardinality $N$. The codomain of $f$ on this bounded region is also bounded so the values of $i_k$ are also chosen from a finite set for steps which step out of the bounded region. From here previous principle still applies.
+\end{proof}
+
+\begin{theorem}
+The orbit of every rational is eventually periodic or eventually reaches an integer if:\[
+0 = \liminf_{N\rightarrow \infty} \sup_{n\in [1-N,N]\cap \mathbb{Z}} \lambda (f^{-1}( (-\infty, -N] \cup [N, \infty)) \cap J_n)
+\] 
+\end{theorem}
+
+\begin{proof}
+Let us look at a rational \[x = \frac{p}{q} = \sum_{n=0}^{\infty} \frac{a_n}{\prod_{k=0}^{n-1}m_k}\]
+We can assume that the sequence of the absolute values of it's orbit tends to infinity from theorem \ref{bondolt}. Let \[ \ell_{n_0} = (p - q \sum_{n=0}^{n_0-1} \frac{a_n}{\prod_{k=0}^{n-1}m_k})\prod_{k=0}^{n_0 - 2} m_k
+\]
+With this we can define the sequence:\[
+\frac{\ell_{n_0}}{q} = \frac{a_{n_0}}{m_{n_0-1}} + \frac{1}{m_{n_0-1}}\sum_{n=n_0+1}^{\infty} \frac{a_n}{\prod_{k=n_0}^{n-1}m_k}
+\]
+Let us assume that the set of numbers which are in the sequence has a rational limit point. Let this be $\frac{a}{b}$. In this case for infinitely many $n_0$:
+\[
+0 < | \frac{\ell_{n_0}}{q} - \frac{a}{b} | < \frac{1}{qb} 
+\]
+This is a contradiction since $| \frac{\ell_{n_0}}{q} - \frac{a}{b} | = \frac{|\ell_{n_0}b - aq|}{qb}$ so if it is non-zero, then it is at least $\frac{1}{qb}$. We will show that if the orbit of a rational is not eventually an integer then this contradiction applies.\\
+
+Since $a_n$ is an element of $\{0...m_{n-1}-1\}$ if $n>0$, it is true that $\frac{a_n}{m_{n-1}} \in [0,1]$ if $n>0$.
+
+\begin{lemma}
+The sequence \[\sum_{n=n_0+1}^{\infty} \frac{a_n}{\prod_{k=n_0}^{n-1}m_k}\] is bounded by $[0,1]$.
+\end{lemma}
+
+\begin{proof}
+This sequence describes the position of $x$ inside of $J_{i_0...i_{n_0}}$. Since $x = L_{n_0}(x) + \sum_{n=n_0+1}^{\infty} \frac{a_n}{\prod_{k=0}^{n-1}m_k}$ that means that:\[
+(x - L_{n_0}(x))\prod_{k=0}^{n_0-1}m_k = \sum_{n=n_0+1}^{\infty} \frac{a_n}{\prod_{k=n_0}^{n-1}m_k} 
+\]
+We also know that $\prod_{k=0}^{n_0-1} \frac{1}{m_k} = \lambda(J_{i_0...i_{n_0}})$. This means that the function $\phi(y) = (y - L_{n_0}(x))\prod_{k=0}^{n_0-1}m_k$ is the linear map which maps the two ends of $J_{i_0...i_{n_0}}$ onto the two ends of $[0,1]$ while preserving direction. Since the value of the suquence at $n_0$ is $\phi(x)$ this proves the lemma.
+\end{proof}
+
+We know that $f^k(x)$ goes to infinity. Let us observe what does the following condition tell us:\[
+0 = \liminf_{N\rightarrow \infty} \sup_{n\in [1-N,N]\cap \mathbb{Z}} \lambda (f^{-1}( (-\infty, -N] \cup [N, \infty)) \cap J_n)
+\] 
+It basically says that stepping out of the bounded region $[-N, N]$ becomes harder and harder the bigger $f^k(x)$ grows. Since it is unbounded for every integer $N > |x|$ there is a non-negative integer $k$ for which $f^k(x)\in [-N, N]$ and $f^{k+1}(x) \notin [-N,N]$. Let us observe a $k$ and $N$ like this.\\
+
+Since the subintervals of  $J_{i_k}$ which are labelled by two characters are placed in a row according to lemma \ref{Rendszer3} those which have an image in $(-\infty, N] \cup [N,\infty)$ are the first few and last few. From here $\min(\frac{a_{k+1}}{m_{k}}, 1 - \frac{a_{k+1}}{m_{k}}) < \sup_{n\in [1-N,N]\cap \mathbb{Z}} \lambda (f^{-1}( (-\infty, -N] \cup [N, \infty)) \cap J_n)$. If the right hand side is $\varepsilon$ this means that $\frac{1}{m_k} < \varepsilon$. From here the sequence $\frac{\ell_{n_0}}{q}$ has a subsequence which tends to zero or one. If it is ever exactly zero or one, then $x \in \partial J_{i_0...i_{n_0}}$ so the orbit of $x$ is eventually an integer. Otherwise the set of numbers in the sequence has zero or one as a limit point, which is rational.
+\end{proof}
+
+%Let us pick an open interval $I$ and a non-null subset $B_0$ of the domain. There is an $N$ for which if $n>N$ then $\pi(f^{-n}(I) \cap B_0) > \frac{\pi(I)\pi(B_0)}{2}$. Then let $B_1 = B_0 \setminus f^{-n}(I)$. And continue this iteration. This means that $\pi(B_n) < $
+
+%\ref{Expansive Markov-partitions} 
+%If the $P$ matrix defines an aperiodic irreducible Markov-chain, then there can be only one eigenvector of it associated with eigenvalue 1.
+
+
+
+%\begin{theorem}
+%The explicit form of the Frobenius-Perron operator for transformation $T$ is the following:\[
+%P_T(f)(x) = \sum_{z \in [1, 4^{\ell(\lfloor x \rfloor)} + 1] \cap \mathbb{Z}} \frac{\rho(z)}{|T'(z)|}
+%\]
+
+%Where $|T'(z)|=4^{\ell(z)}$
+%\end{theorem}
+
+\end{document}

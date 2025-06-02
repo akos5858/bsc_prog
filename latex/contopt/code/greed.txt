@@ -1,0 +1,6 @@
+for i = 1 ... n do
+    if d(S+v_i, T) > d(S, T+v_i): 
+        S <- v_i
+    else:
+        T <- v_i
+return T

@@ -1,0 +1,9 @@
+twosum(A[1:n], b):
+    mergesort(A)
+    i := 1
+    while i < n:
+        key := b - A(i)
+	    if binker(A[i:n], key) == 1:
+	        return 1
+	    i++
+    return 0 
