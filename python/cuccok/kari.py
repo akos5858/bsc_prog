@@ -1,7 +1,10 @@
 import random as rd
 
-names = ["Szeri", "Gyuri", "Dina", "Beni", "Viki", "Guszti", "Emil"]
-pairs = [("Szeri", "Gyuri"), ("Dina", "Beni"), ("Viki", "Guszti")]
+#names = ["Szeri", "Gyuri", "Dina", "Beni", "Viki", "Guszti", "Emil"]
+#pairs = [("Szeri", "Gyuri"), ("Dina", "Beni"), ("Viki", "Guszti")]
+
+names = ["Szeri", "Gyuri", "Beni", "Viki", "Guszti", "Emil"]
+pairs = [("Szeri", "Gyuri"), ("Viki", "Guszti")]
 
 def kari(lst: list):
     d = {}
@@ -16,10 +19,12 @@ def kari(lst: list):
             return kari(lst)
         if d[b] == a:
             return kari(lst)
+        
     l = []
     for v in d.values(): l.append(v)
     l = list(dict.fromkeys(l))
-    if len(l) != 7: return kari(lst)
+    if len(l) != len(names): return kari(lst)
+
     return d
 
 def meta():
